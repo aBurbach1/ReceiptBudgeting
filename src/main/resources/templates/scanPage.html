@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Scan or Upload Receipt</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <style>
+  h1 {text-align: center;}
+  .button {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+     display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+  .scanButton {
+    background-color: #4CAF50;
+    position: absolute;
+    top: 350px;
+    left: 100px;
+    }
+  .uploadButton {
+    background-color: #008CBA;
+    position: absolute;
+    top: 350px;
+    right: 100px;
+    } /* Blue */
+</style>
+</head>
+<body>
+<h1> Scan or Upload Receipt</h1>
+<a href=""><div class="button scanButton">Scan Receipt</div></a>
+<a href=""><div class="button uploadButton">Upload Receipt</div></a>
+</body>
+</html>
