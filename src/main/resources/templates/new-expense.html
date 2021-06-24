@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Record New Expense</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        h2 {
+            text-align: left;
+        }
+
+        .button {
+            border: none;
+            color: white;
+            padding: 10px 32px;
+            text-align: center;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+            display: block;
+            width: 130px;
+            transition-duration: 0.2s;
+        }
+
+        .button:hover {
+            background-color: #7b7bf7;
+            color: white;
+        }
+
+        .scanReceiptButton {
+            background-color: #0000FF;
+        }
+    </style>
+</head>
+
+<body>
+<div>
+    <h2> August 2021 Budget</h2>
+    <h4>Record New Expense</h4>
+</div>
+<div style="padding: 13%;">
+    <center>
+        <a style="padding: 20px;" href="scan.html">
+            <div class="button scanReceiptButton">Scan Receipt</div>
+        </a>
+        <a style="padding: 20px;" href="manual-expense.html">
+            <div class="button scanReceiptButton">Enter Manually</div>
+        </a>
+    </center>
+</div>
+</body>
+
+</html>
