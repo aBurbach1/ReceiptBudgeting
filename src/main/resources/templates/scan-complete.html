@@ -1,10 +1,21 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Record New Expense</title>
+    <title>Confirm New Expense</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <style>
-        h1 {text-align: center;}
+        body {
+            font-family: Arial,serif;
+            margin: 0;
+            text-align: center;
+        }
+        .header {
+            padding: 20px;
+            text-align: center;
+            background: #454bff;
+            color: white;
+            font-size: 15px;
+        }
         .button {
             background-color: #454bff;
             border: 2px solid #454bff;
@@ -26,32 +37,23 @@
             color: white;
         }
 
-        body {
-            font-family: Arial,serif;
-            margin: 0;
-            text-align: center;
-        }
-        .header {
-            padding: 20px;
-            text-align: center;
-            background: #454bff;
-            color: white;
-            font-size: 15px;
-        }
     </style>
 </head>
 <body>
 
 <div class="header">
-    <h1>Record New Expense</h1>
-    <p>August 2021 Budget</p>
-</div>
-<div class="body">
-    <br><br>
-    <a href="/scan"><div class="button">Scan Receipt</div></a>
-    <br><br>
-    <a href="/manual-expense"><div class="button">Enter Manually</div></a>
+    <h1>Confirm New Expense</h1>
 </div>
 
+<form>
+    <label for="category">Category:</label><br>
+    <input type="text" id="category" name="category"><br>
+    <label for="date">Date:</label><br>
+    <input type="text" id="date" name="date"><br>
+    <label for="amount">Amount:</label><br>
+    <input type="text" id="amount" name="amount"><br>
+    <br><br><br>
+    <input class="button" type="submit" value="Add Expense"><br>
+</form>
 </body>
 </html>
