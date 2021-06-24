@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-
+    <title>Enter Expense Manually</title>
 <head>
     <style>
         h2 {
@@ -146,12 +146,24 @@
             border-radius: 4px 0 0 4px;
             background: white;
         }
+        body {
+            font-family: Arial,serif;
+            margin: 0;
+        }
+        .header {
+            padding: 20px;
+            text-align: center;
+            background: #454bff;
+            color: white;
+            font-size: 15px;
+        }
     </style>
 </head>
 
 <body>
-<h2>New Manual Expense</h2>
-
+<div class="header">
+    <h1>New Manual Expense</h1>
+</div>
 
 <div id="manualExpenseInputs">
     <form action="/action_page.php">

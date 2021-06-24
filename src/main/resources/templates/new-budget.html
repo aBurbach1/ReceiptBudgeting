@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Budget</title>
+    <style>
+        .header {
+            padding: 20px;
+            text-align: center;
+            background: #454bff;
+            color: white;
+            font-size: 15px;
+        }
+        .body {
+            padding: 20px;
+            text-align: center;
+        }
+        .column {
+            float: left;
+            width: 50%;
+            padding: 50px;
+        }
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        .button {
+            background-color: #454bff;
+            border: 2px solid #454bff;
+            color: white;
+            padding: 10px 32px;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            top: 0;
+            right: 0;
+            transition-duration: 0.2s;
+            display: inline-block;
+            margin: 4px 2px;
+            text-decoration: none;
+        }
+        a:visited {
+            text-decoration: none;
+            color: white;
+        }
+        .columns {
+            column-count: 2;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Create New Budget</h1>
+    </div>
+
+    <div class="body">
+    <form action="/">
+        <form action="/action_page.php">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name"><br><br>
+            <label for="income">Income:</label>
+            <input type="text" id="income" name="income"><br><br>
+        </form>
+    </form>
+
+    <h3>Expenses</h3>
+        <hr>
+
+<div class="columns">
+    <div >
+        <h2>Category</h2>
+        <form action="/">
+            <label for="category">Category</label>
+            <select name="category" id="category">
+                <option value="rent">Rent</option>
+                <option value="groceries">Groceries</option>
+                <option value="shopping">Shopping</option>
+                <option value="carPayment">Car Payment</option>
+                <option value="phoneBill">Phone Bill</option>
+            </select>
+        </form>
+    </div>
+    <div>
+        <h2>Amount</h2>
+        <form action="/">
+            <form action="/action_page.php">
+                <label for="amount">Amount:</label>
+                <input type="text" id="amount" name="amount"><br><br>
+            </form>
+        </form>
+    </div>
+    </div>
+        <div>
+            <button class="button">Add Another Category</button>
+            <button class="button">Create Budget</button>
+        </div>
+
+
+
+    </div>
+
+</body>
+</html>
