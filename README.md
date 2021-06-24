@@ -9,3 +9,7 @@
  Unimplemented details include 
  -scan and upload functionalitiy
  -ability to view updated receipt
+
+# Release Notes
+(6/24)
+There are screens for each core functionality with navigation between them where relevant. 
