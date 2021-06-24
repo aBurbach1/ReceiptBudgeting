@@ -16,6 +16,9 @@ public class BudgetController {
     @GetMapping(value="/new-expense")
     public String newExpense() { return "new-expense"; }
 
+    @GetMapping(value="/manual-expense")
+    public String manualExpense() { return "manual-expense"; }
+
     @GetMapping(value="/scan")
     public String scan() { return "scan"; }
 
