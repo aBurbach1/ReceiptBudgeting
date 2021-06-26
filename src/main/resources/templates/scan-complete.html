@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Confirm New Expense</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <style>
+        body {
+            font-family: Arial,serif;
+            margin: 0;
+            text-align: center;
+        }
+        .header {
+            padding: 20px;
+            text-align: center;
+            background: #454bff;
+            color: white;
+            font-size: 15px;
+        }
+        .button {
+            background-color: #454bff;
+            border: 2px solid #454bff;
+            color: white;
+            padding: 10px 32px;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            top: 0;
+            right: 0;
+            transition-duration: 0.2s;
+            display: inline-block;
+            margin: 4px 2px;
+            text-decoration: none;
+        }
+        a:visited {
+            text-decoration: none;
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Confirm New Expense</h1>
+</div>
+
+<form>
+  <label for="category">Category:</label><br>
+  <input type="text" id="category" name="category"><br>
+  <label for="date">Date:</label><br>
+  <input type="text" id="date" name="date"><br>
+  <label for="amount">Amount:</label><br>
+  <input type="text" id="amount" name="amount"><br>
+  <br><br><br>
+  <input class="button" type="submit" value="Add Expense"><br>
+</form>
+</body>
+</html>
