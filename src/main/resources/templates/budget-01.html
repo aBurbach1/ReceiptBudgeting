@@ -8,31 +8,26 @@
         h2 {
             text-align: left;
         }
-
         .button {
-            border: none;
+            background-color: #454bff;
+            border: 2px solid #454bff;
             color: white;
             padding: 10px 32px;
             text-align: center;
             font-size: 16px;
-            margin: 4px 2px;
             cursor: pointer;
-            position: absolute;
             border-radius: 5px;
             top: 0;
             right: 0;
             transition-duration: 0.2s;
-        }
-
-        .button:hover {
-            background-color: #7b7bf7;
-            color: white;
-        }
-
-        .newExpenseButton {
-            background-color: #0000FF;
+            display: inline-block;
+            margin: 4px 2px;
+            text-decoration: none;
             float: right;
-            margin: 20px 20px;
+        }
+        a:visited {
+            text-decoration: none;
+            color: white;
         }
 
         h4 {
@@ -66,54 +61,67 @@
         }
 
         body {
-            margin: 20px;
+            font-family: Arial,serif;
+            margin: 0;
+        }
+        .header {
+            padding: 20px;
+            text-align: center;
+            background: #454bff;
+            color: white;
+            font-size: 15px;
         }
     </style>
 </head>
 
 <body>
-<div>
-    <h2> August 2021 Budget</h2>
-    <a href="new-expense.html">
-        <div class="button newExpenseButton">New Expense</div>
-    </a>
-    <h4>Income: $2,500</h4>
-    <h4 style="margin-left: 70px">Expenses: $2,000</h4>
+<div class="header">
+    <h1>August 2021 Budget</h1>
+</div>
+<br><br>
+<div class="button"><a href="/new-expense">New Expense</a></div>
+<br><br><br>
+<div class="body">
+    <div>
+        <h4>Income: $2,500</h4>
+        <h4 style="margin-left: 70px">Expenses: $2,000</h4>
+    </div>
+
+    <div>
+        <div class="progress" style="float: left; width: 90%;">
+            <div class="progress-done" data-done="50%">50%</div>
+        </div>
+        <h4 style="float: left; margin-left: 20px;">$1,000 Spent</h4>
+    </div>
+
+    <div id="expenses">
+        <div style="clear: both; padding: 30px;">
+            <h4 style="margin-right: 100px; float:left">Rent</h4>
+            <div class="progress" style="width: 500px; float: right">
+                <div class="progress-done" data-done="50%">50%</div>
+            </div>
+        </div>
+        <div style="clear: both; padding: 30px;">
+            <h4 style="margin-right: 100px; float:left">Car Payment</h4>
+            <div class="progress" style="width: 500px; float: right">
+                <div class="progress-done" data-done="50%">50%</div>
+            </div>
+        </div>
+        <div style="clear: both; padding: 30px;">
+            <h4 style="margin-right: 100px; float:left">Phone</h4>
+            <div class="progress" style="width: 500px; float: right">
+                <div class="progress-done" data-done="50%">50%</div>
+            </div>
+        </div>
+        <div style="clear: both; padding: 30px;">
+            <h4 style="margin-right: 100px; float:left">Groceries</h4>
+            <div class="progress" style="width: 500px; float: right">
+                <div class="progress-done" data-done="50%">50%</div>
+            </div>
+        </div>
+    </div>
 </div>
 
-<div>
-    <div class="progress" style="float: left; width: 90%;">
-        <div class="progress-done" data-done="50%">50%</div>
-    </div>
-    <h4 style="float: left; margin-left: 20px;">$1,000 Spent</h4>
-</div>
-
-<div id="expenses">
-    <div style="clear: both; padding: 30px;">
-        <h4 style="margin-right: 100px; float:left">Rent</h4>
-        <div class="progress" style="width: 500px; float: right">
-            <div class="progress-done" data-done="50%">50%</div>
-        </div>
-    </div>
-    <div style="clear: both; padding: 30px;">
-        <h4 style="margin-right: 100px; float:left">Car Payment</h4>
-        <div class="progress" style="width: 500px; float: right">
-            <div class="progress-done" data-done="50%">50%</div>
-        </div>
-    </div>
-    <div style="clear: both; padding: 30px;">
-        <h4 style="margin-right: 100px; float:left">Phone</h4>
-        <div class="progress" style="width: 500px; float: right">
-            <div class="progress-done" data-done="50%">50%</div>
-        </div>
-    </div>
-    <div style="clear: both; padding: 30px;">
-        <h4 style="margin-right: 100px; float:left">Groceries</h4>
-        <div class="progress" style="width: 500px; float: right">
-            <div class="progress-done" data-done="50%">50%</div>
-        </div>
-    </div>
-</div>
 </body>
 
 </html>

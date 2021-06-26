@@ -3,8 +3,68 @@
 <head>
   <title>Budget Application</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <style>
+    body {
+      font-family: Arial,serif;
+      margin: 0;
+    }
+    .header {
+      padding: 20px;
+      text-align: center;
+      background: #454bff;
+      color: white;
+      font-size: 15px;
+    }
+    .body {
+      padding: 20px;
+      text-align: center;
+    }
+    .budgetLinks {
+      background-color: #454bff;
+      color: white;
+      padding: 14px 25px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .button {
+      background-color: #454bff;
+      border: 2px solid #454bff;
+      color: white;
+      padding: 10px 32px;
+      text-align: center;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      top: 0;
+      right: 0;
+      transition-duration: 0.2s;
+      display: inline-block;
+      margin: 4px 2px;
+      text-decoration: none;
+    }
+    a:visited {
+      text-decoration: none;
+      color: white;
+    }
+    .createNew {
+      float: right;
+    }
+  </style>
 </head>
 <body>
-<p>Home</p>
+  <div class="header">
+    <h1>Budget Application</h1>
+  </div>
+  <br><br>
+  <div class="button createNew"><a href="/new-budget">New Create New Budget</a></div>
+  <br><br><br>
+  <div class="body">
+    <h2>My Budgets</h2>
+    <p><a class="button" href="/budget-01">August 2021 Budget</a></p>
+    <p><a class="button" href="/home">Home Renovation Budget</a></p>
+    <p><a class="button" href="/home">Bike Building Budget</a></p>
+    <br><br>
+  </div>
 </body>
 </html>
