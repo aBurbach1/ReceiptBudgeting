@@ -3,125 +3,256 @@
 
 <head>
     <title>Budget View</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+    <script src="https://kit.fontawesome.com/22f447701c.js" crossorigin="anonymous"></script>
     <style>
-        h2 {
-            text-align: left;
-        }
-        .button {
-            background-color: #454bff;
-            border: 2px solid #454bff;
-            color: white;
-            padding: 10px 32px;
-            text-align: center;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 5px;
-            top: 0;
-            right: 0;
-            transition-duration: 0.2s;
-            display: inline-block;
-            margin: 4px 2px;
-            text-decoration: none;
-            float: right;
-        }
-        a:visited {
-            text-decoration: none;
-            color: white;
-        }
-
         h4 {
             display: inline;
             word-wrap: break-word;
         }
 
-        .progress {
-            background-color: #D8D8D8;
-            color: white;
-            height: 25px;
-            border-radius: 5px;
-            margin-top: 10px;
-            border: 2px solid #000000;
+        .flex-container, .flex-row {
+            display: flex;
+            justify-content: space-between;
         }
 
-        .progress-done {
-            background: linear-gradient(to left, #3399FF, #0b2066);
-            border-radius: 4px;
+        .flex-container >div{
+            width: 33.3333333333%
+        }
+        .flex-container {
+            width: 100%;
             align-items: center;
-            justify-content: center;
-            height: 100%;
-            width: 50%;
-            display: flex;
         }
 
         #expenses {
             overflow: auto;
-            width: 1000px;
             margin: 0 auto;
+            padding: 2%
         }
 
         body {
             font-family: Arial,serif;
             margin: 0;
         }
+
         .header {
-            padding: 20px;
+            padding: 4%;
             text-align: center;
-            background: #454bff;
             color: white;
             font-size: 15px;
+            background: linear-gradient(-45deg, #0159CA, #0178CA, #019CCA, #06C1BE, #019CCA, #0178CA, #0159CA);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            width:100%;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        progress-bar {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            -ms-flex-pack: center;
+            justify-content: center;
+            color: #fff;
+            text-align: center;
+            white-space: nowrap;
+            background-color: #007bff;
+            transition: width .6s ease;
+        }
+
+        .progress {
+            display: -ms-flexbox;
+            display: flex;
+            height: 4rem;
+            overflow: hidden;
+            font-size: .75rem;
+            background-color: #cfdae4;
+            border-radius: .25rem;
+            width:70%;
+            float: right;
+            border: 2px solid #9BC2E5;
+        }
+
+        .category {
+            padding: 2%
+        }
+
+        .flex-container, .flex-row {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .flex-container .left-div{
+            width: 75%;
+        }
+
+        .flex-container .right-div{
+            width: 25%;
+        }
+
+        .flex-container .leftCategory-div{
+            width: 10%;
+        }
+
+        .flex-container .centerCategory-div{
+            width: 15%;
+            text-align: left;
+        }
+
+        .flex-container .rightCategory-div{
+                width: 75%;
+                border: 2px solid #9BC2E5;
+                background-color: #cfdae4;
+                height: 2em;
+        }
+
+        .flex-container {
+            width: 100%;
+            align-items: center;
         }
     </style>
 </head>
 
 <body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <img src="https://lh3.googleusercontent.com/proxy/ByY5JZ5kgFMAMYTOekyAgQChZdL6Ij-CHi6RIzrL8H3OuIiFn-OM4WCZ16mxd7kAqsvMC2zsE4mLO7DEI_P2Cik7Y7WhxehZwwKQbrki0St2AjUGGP4NN8HvZ26xUVyNDkLqn1E"
+                     alt="" width="30" height="24" class="d-inline-block align-text-top">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/home">Home</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
 <div class="header">
     <h1>August 2021 Budget</h1>
 </div>
-<br><br>
-<div class="button"><a href="/scan">New Expense</a></div>
-<br><br><br>
-<div class="body">
-    <div>
-        <h4>Income: $2,500</h4>
-        <h4 style="margin-left: 70px">Expenses: $2,000</h4>
-    </div>
 
+<div style="margin: 2%">
     <div>
-        <div class="progress" style="float: left; width: 90%;">
-            <div class="progress-done" data-done="50%">50%</div>
-        </div>
-        <h4 style="float: left; margin-left: 20px;">$1,000 Spent</h4>
-    </div>
+        <div class="flex-row">
+            <div class="flex-container" style="margin-bottom:2%;">
+                <div class="left-div">
+                    <h4>Income: $2,500</h4>
+                    <h4 style="margin-left:20%;margin-right:20%">Expenses: $2,000</h4>
+                    <h4>Spent: $1,000</h4>
+                </div>
 
-    <div id="expenses">
-        <div style="clear: both; padding: 30px;">
-            <h4 style="margin-right: 100px; float:left">Rent</h4>
-            <div class="progress" style="width: 500px; float: right">
-                <div class="progress-done" data-done="50%">50%</div>
+                <div class="right-div">
+                    <a href="/scan" class="btn btn-primary btn-lg active" role="button" aria-pressed="true"
+                       style="float:right;">New Expense</a>
+                </div>
             </div>
         </div>
-        <div style="clear: both; padding: 30px;">
-            <h4 style="margin-right: 100px; float:left">Car Payment</h4>
-            <div class="progress" style="width: 500px; float: right">
-                <div class="progress-done" data-done="50%">50%</div>
+
+        <div>
+            <div class="progress" style="width: 100%">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                     aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 50%">50%
+                </div>
             </div>
         </div>
-        <div style="clear: both; padding: 30px;">
-            <h4 style="margin-right: 100px; float:left">Phone</h4>
-            <div class="progress" style="width: 500px; float: right">
-                <div class="progress-done" data-done="50%">50%</div>
+
+        <div id="expenses">
+            <div class="flex-row">
+                <div class="flex-container" style="margin-bottom:2%;">
+                    <div class="leftCategory-div">
+                        <i class="fas fa-home" style="font-size: 5em; color: blue; margin-right: 4%"></i>
+                    </div>
+
+                    <div class="centerCategory-div">
+                        <h4>Rent</h4>
+                    </div>
+                    <div class="rightCategory-div">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar"
+                             aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 50%; height: 100%">
+                            50%
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div style="clear: both; padding: 30px;">
-            <h4 style="margin-right: 100px; float:left">Groceries</h4>
-            <div class="progress" style="width: 500px; float: right">
-                <div class="progress-done" data-done="50%">50%</div>
+            <div class="flex-row">
+                <div class="flex-container" style="margin-bottom:2%;">
+                    <div class="leftCategory-div">
+                        <i class="fas fa-car" style="font-size: 5em; color: blue; margin-right: 4%"></i>
+                    </div>
+
+                    <div class="centerCategory-div">
+                        <h4>Car Payment</h4>
+                    </div>
+                    <div class="rightCategory-div">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar"
+                             aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 50%; height: 100%">
+                            50%
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-row">
+                <div class="flex-container" style="margin-bottom:2%;">
+                    <div class="leftCategory-div">
+                        <i class="fas fa-phone-alt" style="font-size: 5em; color: blue; margin-right: 4%"></i>
+                    </div>
+
+                    <div class="centerCategory-div">
+                        <h4>Phone</h4>
+                    </div>
+                    <div class="rightCategory-div">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar"
+                             aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 50%; height: 100%">
+                            50%
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-row">
+                <div class="flex-container" style="margin-bottom:2%;">
+                    <div class="leftCategory-div">
+                        <i class="fas fa-utensils" style="font-size: 5em; color: blue; margin-right: 4%"></i>
+                    </div>
+
+                    <div class="centerCategory-div">
+                        <h4>Groceries</h4>
+                    </div>
+                    <div class="rightCategory-div">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar"
+                             aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 50%; height: 100%">
+                            50%
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
 </body>
 
 </html>
