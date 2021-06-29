@@ -2,69 +2,103 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>Budget Application</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
   <style>
-    body {
-      font-family: Arial,serif;
-      margin: 0;
-    }
-    .header {
-      padding: 20px;
-      text-align: center;
-      background: #454bff;
-      color: white;
-      font-size: 15px;
-    }
-    .body {
-      padding: 20px;
-      text-align: center;
-    }
-    .budgetLinks {
-      background-color: #454bff;
-      color: white;
-      padding: 14px 25px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-    }
-    .button {
-      background-color: #454bff;
-      border: 2px solid #454bff;
-      color: white;
-      padding: 10px 32px;
-      text-align: center;
-      font-size: 16px;
-      cursor: pointer;
-      border-radius: 5px;
-      top: 0;
-      right: 0;
-      transition-duration: 0.2s;
-      display: inline-block;
-      margin: 4px 2px;
-      text-decoration: none;
-    }
-    a:visited {
-      text-decoration: none;
-      color: white;
-    }
-    .createNew {
-      float: right;
-    }
+        body {
+          font-family: Arial,serif;
+        }
+
+        .header {
+            padding: 4%;
+            text-align: center;
+            color: white;
+            font-size: 15px;
+            background: linear-gradient(-45deg, #0159CA, #0178CA, #019CCA, #06C1BE, #019CCA, #0178CA, #0159CA);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            width:100%;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .body {
+          padding: 20px;
+          text-align: center;
+        }
+
+        .flex-container, .flex-row {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .flex-container >div{
+            width: 33.3333333333%
+        }
+
+        .flex-container {
+            width: 100%;
+            align-items: center;
+        }
   </style>
 </head>
 <body>
-  <div class="header">
-    <h1>Budget Application</h1>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <img src="https://lh3.googleusercontent.com/proxy/ByY5JZ5kgFMAMYTOekyAgQChZdL6Ij-CHi6RIzrL8H3OuIiFn-OM4WCZ16mxd7kAqsvMC2zsE4mLO7DEI_P2Cik7Y7WhxehZwwKQbrki0St2AjUGGP4NN8HvZ26xUVyNDkLqn1E" alt="" width="30" height="24" class="d-inline-block align-text-top">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/home">Home</a>
+        </li>
+      </ul>
+    </div>
   </div>
-  <br><br>
-  <div class="button createNew"><a href="/new-budget">New Create New Budget</a></div>
-  <br><br><br>
+</nav>
+
+<div class="header">
+  <h1>Budget Application</h1>
+</div>
+
+<div style="margin: 2%">
+  <div class="flex-row">
+    <div class="flex-container">
+      <div class="left-div"></div>
+      <div class="center-div">
+        <div style="margin: 0 auto">
+          <h2 style="text-align: center">My Budgets</h2>
+        </div>
+      </div>
+      <div class="right-div">
+        <a href="/new-budget" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" style="float: right;">Create New Budget</a>
+      </div>
+    </div>
+  </div>
   <div class="body">
-    <h2>My Budgets</h2>
-    <p><a class="button" href="/budget-01">August 2021 Budget</a></p>
-    <p><a class="button" href="/home">Home Renovation Budget</a></p>
-    <p><a class="button" href="/home">Bike Building Budget</a></p>
-    <br><br>
+    <p> <a href="/budget-01" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" style="width: 30%;">August 2021 Budget</a>
+    <p><a href="/home" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" style="width: 30%;">Home Renovation Budget</a></p>
+    <p><a href="/home" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" style="width: 30%;">August 2021 Budget</a></p>
   </div>
+</div>
 </body>
 </html>
