@@ -7,7 +7,7 @@ import java.util.List;
 public class Category {
     private String categoryName;
     private String[] validCategories = {"Groceries", "Rent", "Mortgage", "Entertainment", "Transportation",
-            "Laundry", "Utilities", "Laundry"};
+            "Laundry", "Utilities"};
 
     public String getCategoryName() {
         return categoryName;

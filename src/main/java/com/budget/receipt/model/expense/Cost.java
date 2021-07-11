@@ -20,4 +20,6 @@ public class Cost {
     public boolean isValidAmount() {
         return (amount.scale() <= 2);
     }
+
+    public boolean equals(Cost otherCost) {return amount.compareTo(otherCost.getAmount()) == 0;}
 }

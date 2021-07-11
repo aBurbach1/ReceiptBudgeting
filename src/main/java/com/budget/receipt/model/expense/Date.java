@@ -15,7 +15,7 @@ public class Date {
 
     @Override
     public String toString() {
-        return monthArr[this.month - 1] + this.day + ", " + this.year;
+        return monthArr[this.month - 1] + " " + this.day + ", " + this.year;
     }
 
     public boolean isValidDate() {
