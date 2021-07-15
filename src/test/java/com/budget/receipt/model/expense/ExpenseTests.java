@@ -40,10 +40,12 @@ public class ExpenseTests {
         y.setAmount(new BigDecimal("23.3"));
         b.setCost(y);
 
-        //Should pass; failing
-        assertEquals(a, a2);
-        assertNotEquals(a, b);
-        assertNotEquals(a, c);
+        //assertEquals(a, a2);
+        assertTrue(a.equals(a2));
+        //assertNotEquals(a, b);
+        assertFalse(a.equals(b));
+        //assertNotEquals(a, c);
+        assertFalse(a.equals(c));
 
 
 
