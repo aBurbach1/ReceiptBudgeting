@@ -13,3 +13,6 @@
 # Release Notes
 (6/24)
 There are screens for each core functionality with navigation between them where relevant. 
+
+(7/17)
+All of our classes are in place to handle the front end functionality.
