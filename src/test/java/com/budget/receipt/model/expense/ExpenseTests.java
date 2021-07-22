@@ -29,6 +29,8 @@ public class ExpenseTests {
         Expense a2 = new Expense();
         Expense b = new Expense();
         Expense c = new Expense();
+        Category x3 = new Category();
+        x3.setCategoryName("Laundry");
 
         a2.setCategory(x);
         b.setCategory(x);
