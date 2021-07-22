@@ -21,7 +21,7 @@ public class Expense {
     }
 
     public boolean equals(Expense otherExpense) {
-        if(this.category.toString().equals(otherExpense.toString()) && this.cost.equals(otherExpense.cost)) {
+        if(this.category.getCategoryName().equals(otherExpense.category.getCategoryName()) && this.cost.equals(otherExpense.cost)) {
             return true;
         }
         else return false;
