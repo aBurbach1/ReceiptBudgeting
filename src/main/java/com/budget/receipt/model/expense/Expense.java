@@ -1,5 +1,7 @@
 package com.budget.receipt.model.expense;
 
+import com.budget.receipt.model.budget.Budget;
+
 public class Expense {
     private Cost cost;
     private Category category;

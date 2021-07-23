@@ -30,12 +30,9 @@ public class CostTests {
         c.setAmount(new BigDecimal("7.888"));
         assertFalse(c.isValidAmount());
 
-        //assertNotEquals(a, b);
-        assertFalse(a.equals(b));
+        assertNotEquals(a, b);
         b.setAmount(x);
-        //assertEquals(a, b);
-        assertTrue(a.equals(b));
-
+        assertEquals(a, b);
 
     }
 }
