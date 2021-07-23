@@ -1,5 +1,8 @@
 package com.budget.receipt.model.expense;
 
+/**
+ * date class
+ */
 public class Date {
     private int day;
     private int month;
@@ -7,17 +10,31 @@ public class Date {
     private final String monthArr[] = {"January", "February", "March", "April", "May", "June",
             "July", "August", "September", "November", "December"};
 
+    /**
+     * constructor
+     * @param day
+     * @param month
+     * @param year
+     */
     public Date(int day, int month, int year) {
         this.day = day;
         this.month = month;
         this.year = year;
     }
 
+    /**
+     * to string override for date display
+     * @return formatted date string
+     */
     @Override
     public String toString() {
         return monthArr[this.month - 1] + " " + this.day + ", " + this.year;
     }
 
+    /**
+     * checks if date is valid
+     * @return boolean
+     */
     public boolean isValidDate() {
         if(this.year > 1990 && this.year < 2050){
             if(this.month > 0 && this.month < 13)
@@ -27,6 +44,10 @@ public class Date {
         else return false;
     }
 
+    /**
+     * checks if day is valid, helper method for isValidDate
+     * @return boolean
+     */
     public boolean isValidDay() {
         int numDays = 0;
         switch(this.month){
