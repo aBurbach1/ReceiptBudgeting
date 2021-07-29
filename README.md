@@ -11,8 +11,11 @@
  -ability to view updated receipt
 
 # Release Notes
-(6/24)
+(6/24 - Milestone 1)
 There are screens for each core functionality with navigation between them where relevant. 
 
-(7/17)
+(7/17 - Milestone 2)
 All of our classes are in place to handle the front end functionality. We have also updated the front-end CSS. 
+
+(7/29 - Milestone 3)
+We have implemented ORC, the technology that we will use to scan receipts into our application for use in budgets. Our database is hooked up and can add tables to the schema. The tables will hold the information for the budgets and their expenses.   
