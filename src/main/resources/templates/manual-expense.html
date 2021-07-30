@@ -7,7 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+    <script src="https://kit.fontawesome.com/22f447701c.js" crossorigin="anonymous"></script>
     <style>
+        body {
+            font-family: Arial,serif;
+            text-align: center;
+        }
+
         h2 {
             text-align: left;
         }
@@ -42,12 +48,6 @@
             padding: 3px 5px;
             box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.1);
             width: 190px;
-        }
-
-        .body {
-            padding: 4em;
-            background: #e5e5e5;
-            font: 13px/1.4 Geneva, 'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
         }
 
         [type="date"] {
@@ -101,11 +101,6 @@
             background: white;
         }
 
-        body {
-            font-family: Arial,serif;
-            margin: 0;
-        }
-
         .header {
             padding: 4%;
             text-align: center;
@@ -140,10 +135,6 @@
             background-color: blue;
             border-color: blue;
         }
-
-        .body {
-            padding: .5%;
-        }
     </style>
 </head>
 
@@ -159,9 +150,17 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <img src="https://lh3.googleusercontent.com/proxy/ByY5JZ5kgFMAMYTOekyAgQChZdL6Ij-CHi6RIzrL8H3OuIiFn-OM4WCZ16mxd7kAqsvMC2zsE4mLO7DEI_P2Cik7Y7WhxehZwwKQbrki0St2AjUGGP4NN8HvZ26xUVyNDkLqn1E" alt="" width="30" height="24" class="d-inline-block align-text-top">
+                <a class="navbar-brand">
+                    <i class="fas fa-money-bill-wave"></i>
+                </a>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/budget-01">Budget View</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/scan">New Expense</a>
                 </li>
             </ul>
         </div>
@@ -202,3 +201,4 @@
 </div>
 </body>
 </html>
+
