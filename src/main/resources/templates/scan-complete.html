@@ -68,21 +68,27 @@
 </div>
 
 <div class="body">
-  <form>
-    <div>
-      <h2 for="category">Category: Grocery</h2>
-    </div>
-    <div style="margin: 2%;">
-      <h2 for="date">Date: June 10, 2021</h2>
-    </div>
-    <div style="margin: 2%;">
-      <h2 for="amount">Amount: $100</h2>
-    </div>
-    <div style="text-align: center; padding-top: 4%;">
-      <a href="/budget-01" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" style="margin-right: 2.5%; width: 10%">Add Expense</a>
-      <a href="/scan" aria-pressed="true" role="button" class="btn btn-outline-primary btn-lg " style="margin-left: 2.5%; width: 10%">Cancel</a>
-    </div>
-  </form>
+  <p>Expense id: <p th:text="${expense.id}"></p></p>
+  <p>Expense category: <p th:text="${expense.category}"></p></p>
+  <p>Expense cost: <p th:text="${expense.cost}"></p></p>
+
 </div>
+<!--<div class="body">-->
+<!--  <form>-->
+<!--    <div>-->
+<!--      <h2 for="category">Category: Grocery</h2>-->
+<!--    </div>-->
+<!--    <div style="margin: 2%;">-->
+<!--      <h2 for="date">Date: June 10, 2021</h2>-->
+<!--    </div>-->
+<!--    <div style="margin: 2%;">-->
+<!--      <h2 for="amount">Amount: $100</h2>-->
+<!--    </div>-->
+<!--    <div style="text-align: center; padding-top: 4%;">-->
+<!--      <a href="/budget-01" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" style="margin-right: 2.5%; width: 10%">Add Expense</a>-->
+<!--      <a href="/scan" aria-pressed="true" role="button" class="btn btn-outline-primary btn-lg " style="margin-left: 2.5%; width: 10%">Cancel</a>-->
+<!--    </div>-->
+<!--  </form>-->
+<!--</div>-->
 </body>
 </html>
