@@ -10,6 +10,11 @@
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
     <script src="https://kit.fontawesome.com/22f447701c.js" crossorigin="anonymous"></script>
     <style>
+        body {
+            font-family: Arial,serif;
+            text-align: center;
+        }
+
         h4 {
             display: inline;
             word-wrap: break-word;
@@ -32,11 +37,6 @@
             overflow: auto;
             margin: 0 auto;
             padding: 2%
-        }
-
-        body {
-            font-family: Arial,serif;
-            margin: 0;
         }
 
         .header {
@@ -89,10 +89,6 @@
             border: 2px solid #9BC2E5;
         }
 
-        .category {
-            padding: 2%
-        }
-
         .flex-container, .flex-row {
             display: flex;
             justify-content: space-between;
@@ -136,14 +132,14 @@
 
 <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
     <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <img src="https://lh3.googleusercontent.com/proxy/ByY5JZ5kgFMAMYTOekyAgQChZdL6Ij-CHi6RIzrL8H3OuIiFn-OM4WCZ16mxd7kAqsvMC2zsE4mLO7DEI_P2Cik7Y7WhxehZwwKQbrki0St2AjUGGP4NN8HvZ26xUVyNDkLqn1E"
-                     alt="" width="30" height="24" class="d-inline-block align-text-top">
+                <a class="navbar-brand">
+                    <i class="fas fa-money-bill-wave"></i>
+                </a>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/home">Home</a>
                 </li>
@@ -256,3 +252,4 @@
 </body>
 
 </html>
+
