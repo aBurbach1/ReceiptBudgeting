@@ -14,6 +14,8 @@ public class Expense {
     private long id;
     private BigDecimal cost;
     private String category;
+    private String budgetName;
+    private Date date;
 
     public String getBudgetName() {
         return budgetName;
@@ -30,9 +32,6 @@ public class Expense {
     public void setDate(Date date) {
         this.date = date;
     }
-
-    private String budgetName;
-    private Date date;
 
     public long getId() { return id; }
 
