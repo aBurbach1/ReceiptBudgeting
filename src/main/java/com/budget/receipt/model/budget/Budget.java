@@ -1,22 +1,43 @@
 package com.budget.receipt.model.budget;
 
+import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
  * This class refers to the basic budget list for the class. Category and Total Budgets extend this calass.
  */
+@Entity
+@Table(name="budgets")
 public class Budget {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+    private String name;
+    private BigDecimal income;
+    private BigDecimal amountSpent;
 
-    /**
-     * The list of budget objects that the model will operate on.
-     */
-    private List<Budget> budgets;
+    public String getName() {
+        return name;
+    }
 
-    /**
-     * Add a new budget to the program's database.
-     * @param newBudget - New budget to be added.
-     */
-    public void addBudget(Budget newBudget) {
-        this.budgets.add(newBudget);
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public BigDecimal getIncome() {
+        return income;
+    }
+
+    public void setIncome(BigDecimal income) {
+        this.income = income;
+    }
+
+    public BigDecimal getAmountSpent() {
+        return amountSpent;
+    }
+
+    public void setAmountSpent(BigDecimal amountSpent) {
+        this.amountSpent = amountSpent;
     }
 }

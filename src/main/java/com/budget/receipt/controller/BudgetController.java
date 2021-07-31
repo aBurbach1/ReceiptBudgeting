@@ -2,17 +2,21 @@ package com.budget.receipt.controller;
 
 import com.budget.receipt.model.expense.Expense;
 import com.budget.receipt.repository.ExpenseRepository;
+import com.budget.receipt.service.ExpenseService;
 import com.budget.receipt.service.OCRService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.List;
+
 @Controller
 public class BudgetController {
     private final ExpenseRepository expenseRepository;
 
     private OCRService ocrService = new OCRService();
+    private ExpenseService expenseService = new ExpenseService();
 
     @Autowired
     public BudgetController(ExpenseRepository expenseRepository) {
@@ -44,6 +48,11 @@ public class BudgetController {
         System.out.println("Expense cost: " + expense.getCost());
         model.addAttribute("expense", expense);
         expenseRepository.save(expense);
+//        List<Expense> expenseList = expenseService.findByBudget("August 2021 Budget");
+//        for(Expense e : expenseList) {
+//            System.out.println(e.getBudgetName());
+//            System.out.println(e.getCost());
+//        }
         return "scan-complete"; }
 
 //    @PostMapping(value="/scan-complete")
