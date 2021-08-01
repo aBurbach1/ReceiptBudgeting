@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+
     <title>New Budget</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta charset="utf-8"/>
@@ -144,89 +145,92 @@
     <h1>Create New Budget</h1>
 </div>
 
-<div style="margin: 2%;">
-    <div>
-        <div class="flex-row">
-            <div class="flex-container">
-                <div class="left-div" style="float: right">
-                    <h2 style="margin-bottom: 5%">Category</h2>
-                    <center>
-                        <div class="accordion" id="accordionCategories">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="flush-headingOne">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                        Add Categories
-                                    </button>
-                                </h2>
-                                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckPhone">
-                                            <label class="form-check-label" for="flexCheckPhone">
-                                                Phone
-                                            </label>
-                                        </div>
+<form th:action="@{/new-budget}" th:object="${Budget}" method="post">
+    <div style="margin: 2%;">
+        <div>
+            <div class="flex-row">
+                <div class="flex-container">
+                    <div class="left-div" style="float: right">
+                        <h2 style="margin-bottom: 5%">Category</h2>
+                        <center>
+                            <div class="accordion" id="accordionCategories">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-headingOne">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                            Add Categories
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckPhone">
+                                                <label class="form-check-label" for="flexCheckPhone">
+                                                    Phone
+                                                </label>
+                                            </div>
 
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckRent">
-                                            <label class="form-check-label" for="flexCheckRent">
-                                                Rent
-                                            </label>
-                                        </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckRent">
+                                                <label class="form-check-label" for="flexCheckRent">
+                                                    Rent
+                                                </label>
+                                            </div>
 
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckGroceries">
-                                            <label class="form-check-label" for="flexCheckGroceries">
-                                                Groceries
-                                            </label>
-                                        </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckGroceries">
+                                                <label class="form-check-label" for="flexCheckGroceries">
+                                                    Groceries
+                                                </label>
+                                            </div>
 
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckCarPayment">
-                                            <label class="form-check-label" for="flexCheckCarPayment">
-                                                Car Payment
-                                            </label>
-                                        </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckCarPayment">
+                                                <label class="form-check-label" for="flexCheckCarPayment">
+                                                    Car Payment
+                                                </label>
+                                            </div>
 
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckMortgage">
-                                            <label class="form-check-label" for="flexCheckMortgage">
-                                                Mortgage
-                                            </label>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckMortgage">
+                                                <label class="form-check-label" for="flexCheckMortgage">
+                                                    Mortgage
+                                                </label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </center>
-                </div>
-                <div class="center-div">
-                    <h2 style="margin-bottom: 5%">Expense</h2>
-                    <center>
-                        <div class="flex" style="margin-top: 2%; width: 90%">
-                            <span class="currency" style="float: left"><b>Name: </b></span>
-                            <input id="name" name="name" type="text" maxlength="15" style="border-left: 0px; outline: 0"/>
-                        </div>
-                        <div class="flex" style="margin-top: 2%; width: 90%">
-                            <span class="currency" style="float: left"><b>Income: $</b></span>
-                            <input id="income" name="income" type="number" maxlength="15" style="border-left: 0px; outline: 0;"/>
-                        </div>
-                        <button type="button" class="btn btn-outline-primary" style="width: 50%; height: 20%; margin-top: 40%;">Create Budget</button>
-                    </center>
-                </div>
-                <div class="right-div" style="float: left">
-                    <h2 style="margin-bottom: 5%">Amount</h2>
-                    <center>
-                        <div class="flex" style="margin-top: 2%; width: 90%">
-                            <span class="currency" style="float: left"><b>Amount: $</b></span>
-                            <input id="amount" name="amount" type="number" maxlength="15" style="border-left: 0px; outline: 0;"/>
-                        </div>
-                    </center>
+                        </center>
+                    </div>
+                    <div class="center-div">
+                        <h2 style="margin-bottom: 5%">Expense</h2>
+                        <center>
+                            <div class="flex" style="margin-top: 2%; width: 90%">
+                                <span class="currency" style="float: left"><b>Name: </b></span>
+                                <input id="name" name="name" type="text"  style="border-left: 0px; outline: 0"/>
+                            </div>
+                            <div class="flex" style="margin-top: 2%; width: 90%">
+                                <span class="currency" style="float: left"><b>Income: $</b></span>
+                                <input id="income" name="income" type="number" maxlength="15" style="border-left: 0px; outline: 0;"/>
+                            </div>
+                            <!--                        <a href="/home" type="button submit" name = "submit" class="btn btn-outline-primary" style="width: 50%; height: 20%; margin-top: 40%;">Create Budget</a>-->
+                            <button type="button submit" name = "submit" class="btn btn-outline-primary" style="width: 50%; height: 20%; margin-top: 40%;">Create Budget</button>
+                        </center>
+                    </div>
+                    <div class="right-div" style="float: left">
+                        <h2 style="margin-bottom: 5%">Amount</h2>
+                        <center>
+                            <div class="flex" style="margin-top: 2%; width: 90%">
+                                <span class="currency" style="float: left"><b>Amount: $</b></span>
+                                <input id="amountSpent" name="amountSpent" type="number" style="border-left: 0px; outline: 0;"/>
+                            </div>
+                        </center>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</form>
 </body>
 </html>
 
