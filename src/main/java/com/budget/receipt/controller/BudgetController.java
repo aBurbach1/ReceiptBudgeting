@@ -16,11 +16,12 @@ public class BudgetController {
     private final ExpenseRepository expenseRepository;
 
     private OCRService ocrService = new OCRService();
-    private ExpenseService expenseService = new ExpenseService();
+    private ExpenseService expenseService;
 
     @Autowired
     public BudgetController(ExpenseRepository expenseRepository) {
         this.expenseRepository = expenseRepository;
+        this.expenseService = new ExpenseService(this.expenseRepository);
     }
 
     @GetMapping(value="/home")
