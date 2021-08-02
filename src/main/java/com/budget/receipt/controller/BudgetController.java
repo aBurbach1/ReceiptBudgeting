@@ -1,27 +1,29 @@
 package com.budget.receipt.controller;
 
+import com.budget.receipt.model.budget.Budget;
 import com.budget.receipt.model.expense.Expense;
+import com.budget.receipt.repository.BudgetRepository;
 import com.budget.receipt.repository.ExpenseRepository;
 import com.budget.receipt.service.ExpenseService;
 import com.budget.receipt.service.OCRService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class BudgetController {
     private final ExpenseRepository expenseRepository;
+    private final BudgetRepository budgetRepository;
 
     private OCRService ocrService = new OCRService();
     private ExpenseService expenseService;
 
     @Autowired
-    public BudgetController(ExpenseRepository expenseRepository) {
+    public BudgetController(ExpenseRepository expenseRepository, BudgetRepository budgetRepository) {
         this.expenseRepository = expenseRepository;
-        this.expenseService = new ExpenseService(this.expenseRepository);
+        this.budgetRepository = budgetRepository;
+        this.expenseService = new ExpenseService(expenseRepository);
     }
 
     @GetMapping(value="/home")
@@ -74,7 +76,17 @@ public class BudgetController {
 //    public String scanComplete(@ModelAttribute("expense") Expense expense) {
 //        return "scan-complete"; }
 
-    @GetMapping(value="/new-budget")
-    public String newBudget() { return "new-budget"; }
+    @GetMapping("/new-budget")
+    public String newBudget(Model model) {
+        model.addAttribute("budget", new Budget());
+        return "new-budget";
+    }
+
+    @PostMapping("/new-budget")
+    public String newBudgetSumbit(@ModelAttribute Budget budget, Model model) {
+        model.addAttribute("budget", budget);
+        budgetRepository.save(budget);
+        return "redirect:/home";
+    }
 }
 
