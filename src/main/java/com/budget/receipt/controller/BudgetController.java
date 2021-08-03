@@ -57,19 +57,6 @@ public class BudgetController {
 //        }
         return "scan-complete"; }
 
-//    @PostMapping(value="/scan-complete")
-//    public String scan() {
-//        Expense expense = ocrService.runOCR("src/main/resources/receipt-images/walmart-receipt.jpg");
-//        expenseRepository.save(expense);
-//        return "/validate-expense/"+expense.getId();
-//    }
-
-//    @GetMapping(value="/validate-expense/{id}")
-//    public String validate(@PathVariable("id") long id) {
-//        Expense expense = expenseRepository.getById(id);
-//        return "/validate-expense/"+id;
-//    }
-
 
 //    @GetMapping(value="/scan-complete")
 //    public String scanComplete(@ModelAttribute("expense") Expense expense) {
