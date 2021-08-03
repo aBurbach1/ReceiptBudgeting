@@ -8,18 +8,19 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class OCRService {
-
     private Map<String, String[]> categoryToRetailerMap = new HashMap<String, String[]>();
     public OCRService() {
-        categoryToRetailerMap.put("Grocery", new String[]{"Walmart", "Bakers"});
+        categoryToRetailerMap.put("Grocery", new String[]{"Walmart", "Bakers", "Hy-vee"});
         categoryToRetailerMap.put("Rent", new String[]{});
         categoryToRetailerMap.put("Mortgage", new String[]{});
-        categoryToRetailerMap.put("Entertainment", new String[]{});
-        categoryToRetailerMap.put("Transportation", new String[]{});
-        categoryToRetailerMap.put("Laundry", new String[]{});
-        categoryToRetailerMap.put("Utilities", new String[]{});
+        categoryToRetailerMap.put("Entertainment", new String[]{"Target", "AMC", "Amazing Pizza Machine"});
+        categoryToRetailerMap.put("Transportation", new String[]{"Metro", "Kwik Trip", "BP"});
+        categoryToRetailerMap.put("Laundry", new String[]{"Wash World"});
+        categoryToRetailerMap.put("Utilities", new String[]{"OPPD", "MUD"});
     }
 
     public Expense runOCR(String filePath) {
@@ -34,42 +35,37 @@ public class OCRService {
     private Expense parseExpense(String txt) {
         Expense expense = new Expense();
         String splicedTxt[] = txt.split(" ");
-        String retailer = splicedTxt[0];
-        expense.setCategory(getCategoryFromRetailer(retailer));
-//        expense.setCost(getCostFromReceipt(splicedTxt));
-        expense.setCost(new BigDecimal("30"));
+        expense.setCategory(getCategoryFromReceipt(txt));
+        expense.setCost(getCostFromReceipt(txt));
         expense.setBudgetName("August 2021 Budget");
-        expense.setDate(new Date());
         return expense;
     }
 
-    private BigDecimal getCostFromReceipt(String[] splicedTxt) {
-        String amountValue = "0";
-        //TODO fix this with regex!
-//        int foundTotalIndex = 0;
-//        for (int i = 0; i < splicedTxt.length; i++) {
-//            String word = splicedTxt[i].trim().toUpperCase();
-//            System.out.println("arr[" + i+ "] is " + word);
-//            if(word.equals("TOTAL")) {
-//                foundTotalIndex = i;
-//                break;
-//            }
-//        }
-//        if(foundTotalIndex > 0) amountValue = splicedTxt[foundTotalIndex + 1];
-//        System.out.println("in getCostFromReceipt: found amount: " + amountValue);
-        BigDecimal amount = new BigDecimal(amountValue);
-        return amount;
-    }
-
-    private String getCategoryFromRetailer(String retailer) {
+    private String getCategoryFromReceipt(String txt) {
         String category = "";
         for(Map.Entry<String, String[]> e: this.categoryToRetailerMap.entrySet()) {
-            if(contains(e.getValue(),retailer)) {
-                category = e.getKey();
-                break;
+            String[] arr = e.getValue();
+            for(String a: arr) {
+                Pattern pattern = Pattern.compile(a, Pattern.CASE_INSENSITIVE);
+                Matcher matcher = pattern.matcher(txt);
+                if(matcher.find()) {
+                    category = e.getKey();
+                    break;
+                }
             }
         }
         return category;
+    }
+
+    private BigDecimal getCostFromReceipt(String txt) {
+        String amountValue = "0";
+        Pattern p = Pattern.compile("(Total|total|TOTAL)\\s*(\\w+)");
+        Matcher m = p.matcher(txt);
+        while(m.find()) {
+            amountValue = m.group(2);
+        }
+        BigDecimal amount = new BigDecimal(amountValue);
+        return amount;
     }
 
     private boolean contains(String[] arr, String retailer) {
