@@ -149,7 +149,9 @@
 </nav>
 
 <div class="header">
-    <h1>August 2021 Budget</h1>
+    <h1 th:each="budget : ${budgets}">
+        <h1 th:text="${budget.name}"></h1>
+    </h1>
 </div>
 
 <div style="margin: 2%">
@@ -157,9 +159,9 @@
         <div class="flex-row">
             <div class="flex-container" style="margin-bottom:2%;">
                 <div class="left-div">
-                    <h4>Income: $2,500</h4>
-                    <h4 style="margin-left:20%;margin-right:20%">Expenses: $2,000</h4>
-                    <h4>Spent: $1,000</h4>
+                    <h4 th:each="budget : ${budgets}">Income:
+                        <h4 th:text="${budget.income}"></h4>
+                    </h4>
                 </div>
 
                 <div class="right-div">
