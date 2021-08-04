@@ -26,12 +26,17 @@ public class BudgetController {
     }
 
     @GetMapping(value="/home")
-    public String home() {
+    public String home(Model model) {
+        model.addAttribute("budgets", budgetRepository.findAll());
         return "home";
     }
 
-    @GetMapping(value="/budget-01")
-    public String budgetDisplay() { return "budget-01"; }
+    @GetMapping(value="/budget/{id}")
+    public String budgetDisplay(@PathVariable("id") long id, Model model) {
+        Budget budget = budgetRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid Id:" + id));
+        model.addAttribute("budgets", budget);
+        return "budget-01";
+    }
 
 //    @GetMapping(value="/new-expense")
 //    public String newExpense() { return "new-expense"; }
