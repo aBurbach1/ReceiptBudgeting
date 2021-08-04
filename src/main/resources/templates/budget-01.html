@@ -98,6 +98,7 @@
             width: 75%;
         }
 
+
         .flex-container .right-div{
             width: 25%;
         }
@@ -112,10 +113,10 @@
         }
 
         .flex-container .rightCategory-div{
-                width: 75%;
-                border: 2px solid #9BC2E5;
-                background-color: #cfdae4;
-                height: 2em;
+            width: 75%;
+            border: 2px solid #9BC2E5;
+            background-color: #cfdae4;
+            height: 2em;
         }
 
         .flex-container {
@@ -156,12 +157,10 @@
     <div>
         <div class="flex-row">
             <div class="flex-container" style="margin-bottom:2%;">
-                <div class="left-div">
+                <div class="left-div" style="text-align: left;">
                     <h4>Income: $2,500</h4>
-                    <h4 style="margin-left:20%;margin-right:20%">Expenses: $2,000</h4>
-                    <h4>Spent: $1,000</h4>
+                    <h4 style="margin-left:15%;">Spent: $1,000</h4>
                 </div>
-
                 <div class="right-div">
                     <a href="/scan" class="btn btn-primary btn-lg active" role="button" aria-pressed="true"
                        style="float:right;">New Expense</a>
@@ -185,7 +184,7 @@
                     </div>
 
                     <div class="centerCategory-div">
-                        <h4>Rent</h4>
+                        <h4>Mortgage</h4>
                     </div>
                     <div class="rightCategory-div">
                         <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar"
@@ -202,7 +201,7 @@
                     </div>
 
                     <div class="centerCategory-div">
-                        <h4>Car Payment</h4>
+                        <h4>Transportation</h4>
                     </div>
                     <div class="rightCategory-div">
                         <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar"
@@ -219,7 +218,7 @@
                     </div>
 
                     <div class="centerCategory-div">
-                        <h4>Phone</h4>
+                        <h4>Utilities</h4>
                     </div>
                     <div class="rightCategory-div">
                         <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar"
@@ -236,8 +235,59 @@
                     </div>
 
                     <div class="centerCategory-div">
-                        <h4>Groceries</h4>
+                        <h4>Grocery</h4>
                     </div>
+                    <div class="rightCategory-div">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar"
+                             aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 50%; height: 100%">
+                            50%
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-row">
+                <div class="flex-container" style="margin-bottom:2%;">
+                    <div class="leftCategory-div">
+                        <i class="fas fa-tshirt" style="font-size: 5em; color: blue; margin-right: 4%"></i>
+                    </div>
+
+                    <div class="centerCategory-div">
+                        <h4>Laundry</h4>
+                    </div>
+                    <div class="rightCategory-div">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar"
+                             aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 50%; height: 100%">
+                            50%
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-row">
+                <div class="flex-container" style="margin-bottom:2%;">
+                    <div class="leftCategory-div">
+                        <i class="fas fa-building" style="font-size: 5em; color: blue; margin-right: 4%"></i>
+                    </div>
+
+                    <div class="centerCategory-div">
+                        <h4>Rent</h4>
+                    </div>
+                    <div class="rightCategory-div">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar"
+                             aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 50%; height: 100%">
+                            50%
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-row">
+                <div class="flex-container" style="margin-bottom:2%;">
+                    <div class="leftCategory-div">
+                        <i class="fas fa-gamepad" style="font-size: 5em; color: blue; margin-right: 4%"></i>
+                    </div>
+
+                    <div class="centerCategory-div">
+                        <h4>Entertainment</h4>
+                    </div>-
                     <div class="rightCategory-div">
                         <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar"
                              aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 50%; height: 100%">

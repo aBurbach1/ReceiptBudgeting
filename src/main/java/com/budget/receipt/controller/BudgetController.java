@@ -36,9 +36,6 @@ public class BudgetController {
 //    @GetMapping(value="/new-expense")
 //    public String newExpense() { return "new-expense"; }
 
-    @GetMapping(value="/manual-expense")
-    public String manualExpense() { return "manual-expense"; }
-
     @GetMapping(value = "/scan")
     public String scan() { return "scan";}
 
@@ -86,6 +83,19 @@ public class BudgetController {
         model.addAttribute("budget", budget);
         budgetRepository.save(budget);
         return "redirect:/home";
+    }
+
+    @GetMapping("/manual-expense")
+    public String manualExpense(Model model) {
+        model.addAttribute("expense", new Expense());
+        return "manual-expense";
+    }
+
+    @PostMapping("/manual-expense")
+    public String manualExpenseSumbit(@ModelAttribute Expense expense, Model model) {
+        model.addAttribute("expense", expense);
+        expenseRepository.save(expense);
+        return "redirect:/budget-01";
     }
 }
 
