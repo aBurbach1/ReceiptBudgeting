@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <title>Enter Expense Manually</title>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -30,7 +30,6 @@
 
         #manualExpenseInputs {
             border-radius: 5px;
-            background-color: #f2f2f2;
             padding: 20px;
             width: 50%;
             margin: 0 auto;
@@ -46,27 +45,8 @@
             border-radius: 5px;
             background-color: #fff;
             padding: 3px 5px;
-            box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.1);
             width: 190px;
-        }
-
-        [type="date"] {
-            background: #fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png) 97% 50% no-repeat;
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        [type="date"]::-webkit-inner-spin-button {
-            display: none;
-        }
-
-        [type="date"]::-webkit-calendar-picker-indicator {
-            opacity: 0;
+            box-shadow: none;
         }
 
         form input {
@@ -75,6 +55,7 @@
             width: 100%;
             color: #666;
             border-radius: 0 4px 4px 0;
+            box-shadow: none;
         }
 
         form input:focus {
@@ -89,6 +70,7 @@
         .flex input {
             max-width: 100%;
             flex: 1 1 300px;
+            box-shadow: none;
         }
 
         .flex .currency {
@@ -172,33 +154,33 @@
     <h1>New Manual Expense</h1>
 </div>
 
+
 <div id="manualExpenseInputs">
-    <form action="/action_page.php">
+    <form th:action="@{/manual-expense}" th:object="${Expense}" method="post">
         <div style="margin: 2%;">
             <h2 for="country">Category</h2>
-            <select id="country" name="country">
-                <option value="rent">Rent</option>
-                <option value="car payment">Car Payment</option>
-                <option value="phone">Phone</option>
-                <option value="groceries">Groceries</option>
+            <select id="category" name="category">
+                <option value="Entertainment">Entertainment</option>
+                <option value="Grocery">Grocery</option>
+                <option value="Laundry">Laundry</option>
+                <option value="Mortgage">Mortgage</option>
+                <option value="Rent">Rent</option>
+                <option value="Transportation">Transportation</option>
+                <option value="Utilities">Utilities</option>
             </select>
-        </div>
-        <div style="margin: 2%;">
-            <h2 for="dateofexpense">Date</h2>
-            <input type="date" name="dateofexpense" id="dateofexpense">
         </div>
         <div style="margin: 2%;">
             <h2 for="amount">Amount</h2>
             <div class="flex">
                 <span class="currency"><b>$</b></span>
-                <input id="amount" name="amount" type="number" maxlength="15" />
+                <input id="cost" name="cost" type="number" maxlength="15" />
             </div>
         </div>
+        <div style="text-align: center; padding-top: 4%;">
+            <button type="button submit" name = "submit" class="btn btn-outline-primary" style="margin-right: 5%; width: 20%">Submit</button>
+            <a href="/scan" aria-pressed="true" role="button" class="btn btn-outline-primary btn-lg " style="margin-left: 5%; width: 20%">Cancel</a>
+        </div>
     </form>
-    <div style="text-align: center; padding-top: 4%;">
-        <a href="/scan-complete" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" style="margin-right: 5%; width: 20%">Submit</a>
-        <a href="/scan" aria-pressed="true" role="button" class="btn btn-outline-primary btn-lg " style="margin-left: 5%; width: 20%">Cancel</a>
-    </div>
 </div>
 </body>
 </html>

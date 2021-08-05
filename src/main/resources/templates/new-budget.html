@@ -45,7 +45,7 @@
         }
 
         .flex-container >div{
-            width: 33.3333333333%
+            width: 50%
         }
 
         .flex-container {
@@ -56,19 +56,27 @@
         .left-div {
             height: 100%;
         }
-        .center-div {
-            height: 100%;
         }
         .right-div {
             height: 100%;
         }
+
 
         input {
             border: 1px solid #c4c4c4;
             border-radius: 5px;
             background-color: #fff;
             padding: 3px 5px;
-            box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.1);
+            width: 190px;
+        }
+
+        form input {
+            padding: 0;
+            border-left: 0;
+            width: 100%;
+            color: #666;
+            border-radius: 0 4px 4px 0;
+            box-shadow: none;
         }
 
         form input:focus {
@@ -83,6 +91,7 @@
         .flex input {
             max-width: 100%;
             flex: 1 1 300px;
+            box-shadow: none;
         }
 
         .flex .currency {
@@ -94,28 +103,6 @@
             border-radius: 4px 0 0 4px;
             background: white;
         }
-
-        .form-check {
-            display: flex;
-            align-items: center;
-        }
-        .form-check label {
-            margin-left: 10px;
-            font-size: 18px;
-            font-weight: 500;
-        }
-        .form-check .form-check-input[type=checkbox] {
-            border-radius: .25em;
-            height: 30px;
-            width: 30px;
-        }
-        .accordion {
-            width: 90%;
-            box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.1);
-            border: 1px solid #c4c4c4;
-            border-radius: 5px;
-        }
-
     </style>
 </head>
 <body>
@@ -150,79 +137,21 @@
         <div>
             <div class="flex-row">
                 <div class="flex-container">
-                    <div class="left-div" style="float: right">
-                        <h2 style="margin-bottom: 5%">Category</h2>
-                        <center>
-                            <div class="accordion" id="accordionCategories">
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="flush-headingOne">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                            Add Categories
-                                        </button>
-                                    </h2>
-                                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                        <div class="accordion-body">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckPhone">
-                                                <label class="form-check-label" for="flexCheckPhone">
-                                                    Phone
-                                                </label>
-                                            </div>
-
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckRent">
-                                                <label class="form-check-label" for="flexCheckRent">
-                                                    Rent
-                                                </label>
-                                            </div>
-
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckGroceries">
-                                                <label class="form-check-label" for="flexCheckGroceries">
-                                                    Groceries
-                                                </label>
-                                            </div>
-
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckCarPayment">
-                                                <label class="form-check-label" for="flexCheckCarPayment">
-                                                    Car Payment
-                                                </label>
-                                            </div>
-
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckMortgage">
-                                                <label class="form-check-label" for="flexCheckMortgage">
-                                                    Mortgage
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </center>
-                    </div>
-                    <div class="center-div">
-                        <h2 style="margin-bottom: 5%">Expense</h2>
+                    <div class="left-div">
+                        <h2 style="margin-bottom: 5%">Budget Name</h2>
                         <center>
                             <div class="flex" style="margin-top: 2%; width: 90%">
                                 <span class="currency" style="float: left"><b>Name: </b></span>
                                 <input id="name" name="name" type="text"  style="border-left: 0px; outline: 0"/>
                             </div>
-                            <div class="flex" style="margin-top: 2%; width: 90%">
-                                <span class="currency" style="float: left"><b>Income: $</b></span>
-                                <input id="income" name="income" type="number" maxlength="15" style="border-left: 0px; outline: 0;"/>
-                            </div>
-                            <!--                        <a href="/home" type="button submit" name = "submit" class="btn btn-outline-primary" style="width: 50%; height: 20%; margin-top: 40%;">Create Budget</a>-->
-                            <button type="button submit" name = "submit" class="btn btn-outline-primary" style="width: 50%; height: 20%; margin-top: 40%;">Create Budget</button>
                         </center>
                     </div>
                     <div class="right-div" style="float: left">
-                        <h2 style="margin-bottom: 5%">Amount</h2>
+                        <h2 style="margin-bottom: 5%">Income</h2>
                         <center>
                             <div class="flex" style="margin-top: 2%; width: 90%">
-                                <span class="currency" style="float: left"><b>Amount: $</b></span>
-                                <input id="amountSpent" name="amountSpent" type="number" style="border-left: 0px; outline: 0;"/>
+                                <span class="currency" style="float: left"><b>Income: $</b></span>
+                                <input id="income" name="income" type="number" maxlength="15" style="border-left: 0px; outline: 0;"/>
                             </div>
                         </center>
                     </div>
@@ -230,6 +159,9 @@
             </div>
         </div>
     </div>
+    <center>
+        <button type="button submit" name = "submit" class="btn btn-outline-primary" style="width: 10%; height: 20%; margin-top: 15%;">Create Budget</button>
+    </center>
 </form>
 </body>
 </html>
