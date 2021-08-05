@@ -64,7 +64,7 @@ public class BudgetController {
         System.out.println("Expense Category: " + expense.getCategory());
         System.out.println("Expense cost: " + expense.getCost());
         model.addAttribute("expense", expense);
-        expenseRepository.save(expense);
+//        expenseRepository.save(expense);
 //        List<Expense> expenseList = expenseService.findByBudget("August 2021 Budget");
 //        for(Expense e : expenseList) {
 //            System.out.println(e.getBudgetName());
@@ -72,6 +72,13 @@ public class BudgetController {
 //        }
         return "scan-complete"; }
 
+    @PostMapping(value="/scan-complete")
+    public String submitExpense(@ModelAttribute Expense expense, Model model) {
+        model.addAttribute("expense", expense);
+        System.out.println("post mapping");
+        expenseRepository.save(expense);
+        return "redirect:/home";
+    }
 
 //    @GetMapping(value="/scan-complete")
 //    public String scanComplete(@ModelAttribute("expense") Expense expense) {

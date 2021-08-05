@@ -76,12 +76,12 @@
   <h1>Confirm New Expense</h1>
 </div>
 
-<div class="body">
-  <p>Expense id: <p th:text="${expense.id}"></p></p>
-  <p>Expense category: <p th:text="${expense.category}"></p></p>
-  <p>Expense cost: <p th:text="${expense.cost}"></p></p>
+<!--<div class="body">-->
+<!--  <p>Expense id: <p th:text="${expense.id}"></p></p>-->
+<!--  <p>Expense category: <p th:text="${expense.category}"></p></p>-->
+<!--  <p>Expense cost: <p th:text="${expense.cost}"></p></p>-->
 
-</div>
+
 <!--<div class="body">-->
 <!--  <form>-->
 <!--    <div>-->
@@ -99,5 +99,47 @@
 <!--    </div>-->
 <!--  </form>-->
 <!--</div>-->
+
+<!--<div id="manualExpenseInputs">-->
+<!--  <form action="/action_page.php">-->
+<!--    <div style="margin: 2%;">-->
+<!--      <h2 for="country">Category</h2>-->
+<!--      <select th:field="*{expense.category}">-->
+<!--        <option value="Grocery">Grocery</option>-->
+<!--        <option value="Rent">Rent</option>-->
+<!--        <option value="Mortgage">Mortgage</option>-->
+<!--        <option value="Entertainment">Entertainment</option>-->
+<!--        <option value="Transportation">Transportation</option>-->
+<!--        <option value="Laundry">Laundry</option>-->
+<!--        <option value="Utilities">Utilities</option>-->
+<!--      </select>-->
+<!--    </div>-->
+<!--    <div style="margin: 2%;">-->
+<!--      <h2 for="amount">Amount</h2>-->
+<!--      <div class="flex">-->
+<!--        <span class="currency"><b>$</b></span>-->
+<!--&lt;!&ndash;        <input id="amount" name="amount" type="number" maxlength="15" />&ndash;&gt;-->
+<!--        <input  type="number" th:field="*{expense.cost}">-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </form>-->
+<form th:action="@{/scan-complete}" th:object="${expense}" method="post">
+  <p>Category: </p><select th:field="*{category}" >
+            <option value="Grocery">Grocery</option>
+            <option value="Rent">Rent</option>
+            <option value="Mortgage">Mortgage</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="Transportation">Transportation</option>
+            <option value="Laundry">Laundry</option>
+            <option value="Utilities">Utilities</option>
+  </select>
+  <p>Amount: </p><input type="number" th:field="*{cost}">
+    <input type="submit" value="Submit" />
+</form>
+  <div style="text-align: center; padding-top: 4%;">
+<!--    <a href="/validate-expense" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" style="margin-right: 5%; width: 20%">Submit</a>-->
+
+      <a href="/scan" aria-pressed="true" role="button" class="btn btn-outline-primary btn-lg " style="margin-left: 5%; width: 20%">Cancel</a>
+  </div>
 </body>
 </html>

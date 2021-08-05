@@ -4,9 +4,8 @@ import com.budget.receipt.model.expense.Expense;
 import com.budget.receipt.repository.ExpenseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 
-import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +18,17 @@ public class ExpenseService {
     }
     public Expense getById(long id) {
         return expenseRepository.getById(id);
+    }
+
+    public int totalExpensesByBudget(String budgetName) {
+        List<Expense> allExpenses = this.getAll();
+        int total = 0;
+        for(Expense e : allExpenses) {
+            if(e.getBudgetName().equals(budgetName)) {
+                total += e.getCost().intValue();
+            }
+        }
+        return total;
     }
 
     public List<Expense> findByBudget(String budget){
