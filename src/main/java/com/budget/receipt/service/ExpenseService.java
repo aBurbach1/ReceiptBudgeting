@@ -31,6 +31,17 @@ public class ExpenseService {
         return total;
     }
 
+    public int totalExpensesByBudgetAndCategory(String budget, String category) {
+        List<Expense> allExpenses = this.getAll();
+        int total = 0;
+        for(Expense e : allExpenses) {
+            if(e.getBudgetName().equals(budget) && e.getCategory().equals(category)) {
+                total += e.getCost().intValue();
+            }
+        }
+        return total;
+    }
+
     public List<Expense> findByBudget(String budget){
         List<Expense> allExpenses = this.getAll();
         List<Expense> selectedExpenses = new ArrayList<Expense>();
