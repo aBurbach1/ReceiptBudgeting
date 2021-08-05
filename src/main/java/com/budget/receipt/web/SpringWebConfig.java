@@ -10,8 +10,15 @@ import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 
+/**
+ * Configures the web beans for Springboot.
+ */
 @Configuration
 public class SpringWebConfig {
+    /**
+     * Serves to resolve templates so that pages will open properly.
+     * @return a properly formatted html template
+     */
     @Bean
     public ITemplateResolver templateResolver() {
         ClassLoaderTemplateResolver resolver = new ClassLoaderTemplateResolver();
@@ -22,6 +29,10 @@ public class SpringWebConfig {
         return resolver;
     }
 
+    /**
+     * Template for setting up Spring with Thymeleaf.
+     * @return a template engine.
+     */
     @Bean
     @Description("Thymeleaf Template Engine")
     public SpringTemplateEngine templateEngine() {
@@ -30,7 +41,10 @@ public class SpringWebConfig {
         templateEngine.setTemplateEngineMessageSource(messageSource());
         return templateEngine;
     }
-
+    /**
+     * Template for setting up Spring with Thymeleaf.
+     * @return a template engine.
+     */
     @Bean
     @Description("Thymeleaf View Resolver")
     public ThymeleafViewResolver viewResolver() {
@@ -40,6 +54,10 @@ public class SpringWebConfig {
         return viewResolver;
     }
 
+    /**
+     * Template for setting up Spring with Thymeleaf.
+     * @return a template engine.
+     */
     @Bean
     @Description("Spring Message Resolver")
     public ResourceBundleMessageSource messageSource() {
