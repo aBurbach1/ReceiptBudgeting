@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['receiptapplication_71',['ReceiptApplication',['../classcom_1_1budget_1_1receipt_1_1_receipt_application.html',1,'com::budget::receipt']]]
+  ['springwebconfig_64',['SpringWebConfig',['../classcom_1_1budget_1_1receipt_1_1web_1_1_spring_web_config.html',1,'com::budget::receipt::web']]]
 ];

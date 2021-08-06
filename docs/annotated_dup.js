@@ -8,18 +8,19 @@ var annotated_dup =
           ] ],
           [ "model", null, [
             [ "budget", "namespacecom_1_1budget_1_1receipt_1_1model_1_1budget.html", [
-              [ "Budget", "classcom_1_1budget_1_1receipt_1_1model_1_1budget_1_1_budget.html", "classcom_1_1budget_1_1receipt_1_1model_1_1budget_1_1_budget" ],
-              [ "CategoryBudget", "classcom_1_1budget_1_1receipt_1_1model_1_1budget_1_1_category_budget.html", "classcom_1_1budget_1_1receipt_1_1model_1_1budget_1_1_category_budget" ],
-              [ "TotalBudget", "classcom_1_1budget_1_1receipt_1_1model_1_1budget_1_1_total_budget.html", "classcom_1_1budget_1_1receipt_1_1model_1_1budget_1_1_total_budget" ]
+              [ "Budget", "classcom_1_1budget_1_1receipt_1_1model_1_1budget_1_1_budget.html", "classcom_1_1budget_1_1receipt_1_1model_1_1budget_1_1_budget" ]
             ] ],
             [ "expense", "namespacecom_1_1budget_1_1receipt_1_1model_1_1expense.html", [
-              [ "Category", "classcom_1_1budget_1_1receipt_1_1model_1_1expense_1_1_category.html", "classcom_1_1budget_1_1receipt_1_1model_1_1expense_1_1_category" ],
-              [ "Cost", "classcom_1_1budget_1_1receipt_1_1model_1_1expense_1_1_cost.html", "classcom_1_1budget_1_1receipt_1_1model_1_1expense_1_1_cost" ],
-              [ "Date", "classcom_1_1budget_1_1receipt_1_1model_1_1expense_1_1_date.html", "classcom_1_1budget_1_1receipt_1_1model_1_1expense_1_1_date" ],
               [ "Expense", "classcom_1_1budget_1_1receipt_1_1model_1_1expense_1_1_expense.html", "classcom_1_1budget_1_1receipt_1_1model_1_1expense_1_1_expense" ]
-            ] ],
-            [ "ExpenseTracker", "classcom_1_1budget_1_1receipt_1_1model_1_1_expense_tracker.html", "classcom_1_1budget_1_1receipt_1_1model_1_1_expense_tracker" ],
-            [ "User", "classcom_1_1budget_1_1receipt_1_1model_1_1_user.html", "classcom_1_1budget_1_1receipt_1_1model_1_1_user" ]
+            ] ]
+          ] ],
+          [ "repository", "namespacecom_1_1budget_1_1receipt_1_1repository.html", [
+            [ "BudgetRepository", "interfacecom_1_1budget_1_1receipt_1_1repository_1_1_budget_repository.html", null ],
+            [ "ExpenseRepository", "interfacecom_1_1budget_1_1receipt_1_1repository_1_1_expense_repository.html", null ]
+          ] ],
+          [ "service", "namespacecom_1_1budget_1_1receipt_1_1service.html", [
+            [ "ExpenseService", "classcom_1_1budget_1_1receipt_1_1service_1_1_expense_service.html", "classcom_1_1budget_1_1receipt_1_1service_1_1_expense_service" ],
+            [ "OCRService", "classcom_1_1budget_1_1receipt_1_1service_1_1_o_c_r_service.html", "classcom_1_1budget_1_1receipt_1_1service_1_1_o_c_r_service" ]
           ] ],
           [ "web", "namespacecom_1_1budget_1_1receipt_1_1web.html", [
             [ "SpringWebConfig", "classcom_1_1budget_1_1receipt_1_1web_1_1_spring_web_config.html", "classcom_1_1budget_1_1receipt_1_1web_1_1_spring_web_config" ]

@@ -87,9 +87,9 @@ public class BudgetController {
 //            System.out.println(e.getBudgetName());
 //            System.out.println(e.getCost());
 //        }
-        return "scan-complete"; }
+        return "scan-complete/{id}"; }
 
-    @PostMapping(value="/scan-complete")
+    @PostMapping(value="/scan-complete/{id}")
     public String submitExpense(@ModelAttribute Expense expense, Model model) {
         model.addAttribute("expense", expense);
         System.out.println("post mapping");

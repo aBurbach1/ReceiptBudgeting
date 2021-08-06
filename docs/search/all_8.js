@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['main_37',['main',['../classcom_1_1budget_1_1receipt_1_1_receipt_application.html#ab2959cc29f2da91128a08f60e7cfe9b6',1,'com::budget::receipt::ReceiptApplication']]],
-  ['manualexpense_38',['manualExpense',['../classcom_1_1budget_1_1receipt_1_1controller_1_1_budget_controller.html#a65a586563fdeea7752bc067b0d685311',1,'com::budget::receipt::controller::BudgetController']]],
-  ['messagesource_39',['messageSource',['../classcom_1_1budget_1_1receipt_1_1web_1_1_spring_web_config.html#af4ec84611481090f1a6e7f5149e2fac3',1,'com::budget::receipt::web::SpringWebConfig']]]
+  ['receiptapplication_36',['ReceiptApplication',['../classcom_1_1budget_1_1receipt_1_1_receipt_application.html',1,'com::budget::receipt']]],
+  ['receiptapplication_2ejava_37',['ReceiptApplication.java',['../_receipt_application_8java.html',1,'']]],
+  ['runocr_38',['runOCR',['../classcom_1_1budget_1_1receipt_1_1service_1_1_o_c_r_service.html#a1b02decb00a6004cd9491af2f635b666',1,'com::budget::receipt::service::OCRService']]]
 ];
