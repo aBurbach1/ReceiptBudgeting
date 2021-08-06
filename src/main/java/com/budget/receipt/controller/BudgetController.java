@@ -58,9 +58,11 @@ public class BudgetController {
     @GetMapping(value = "/scan")
     public String scan() { return "scan";}
 
-    @GetMapping(value="/scan-complete")
-    public String scanComplete(Model model) {
-        Expense expense = ocrService.runOCR("src/main/resources/receipt-images/walmart-receipt.jpg");
+    @GetMapping(value="/scan-complete/{id}")
+    public String scanComplete(@PathVariable("id") long id, Model model) {
+        Budget budget = budgetRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid Id:" + id));
+        model.addAttribute("budgets", budget);
+        Expense expense = ocrService.runOCR("src/main/resources/receipt-images/walmart-receipt.jpg", budget.getName());
         System.out.println("Expense id: " + expense.getId());
         System.out.println("Expense Category: " + expense.getCategory());
         System.out.println("Expense cost: " + expense.getCost());
