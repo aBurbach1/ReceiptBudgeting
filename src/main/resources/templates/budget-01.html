@@ -165,9 +165,11 @@
                 </div>
 
                 <div class="right-div">
-                    <a href="/scan" class="btn btn-primary btn-lg active" role="button" aria-pressed="true"
-                       style="float:right;">New Expense</a>
+                    <p th:each="budget : ${budgets}">
+                        <a th:href="@{/scan/{id}(id=${budget.id})}" class="btn btn-primary btn-lg active" style="float:right;">New Expense</a>
+                    </p>
                 </div>
+
             </div>
         </div>
 

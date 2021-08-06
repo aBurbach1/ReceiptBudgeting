@@ -60,8 +60,7 @@ public class BudgetController {
 
     @GetMapping(value="/scan-complete")
     public String scanComplete(Model model) {
-        String budgetName = "";
-        Expense expense = ocrService.runOCR("src/main/resources/receipt-images/walmart-receipt.jpg", budgetName);
+        Expense expense = ocrService.runOCR("src/main/resources/receipt-images/walmart-receipt.jpg");
         System.out.println("Expense id: " + expense.getId());
         System.out.println("Expense Category: " + expense.getCategory());
         System.out.println("Expense cost: " + expense.getCost());

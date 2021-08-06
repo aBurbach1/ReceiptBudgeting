@@ -77,9 +77,11 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/home">Home</a>
                 </li>
+                <p th:each="budget : ${budgets}" style="float: left;">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/budget-01">Budget View</a>
+                    <a th:href="@{/budget/{id}(id=${budget.id})}" class="nav-link active" aria-current="page">Budget View</a>
                 </li>
+                </p>
             </ul>
         </div>
     </div>
@@ -91,14 +93,18 @@
 
 <div>
     <div class="body">
-        <a href="/scan-complete" aria-pressed="true" role="button" class="btn btn-outline-primary btn-lg " style="width: 20%;">Scan Receipt</a>
+        <p th:each="budget : ${budgets}">
+            <a th:href="@{/scan-complete/{id}(id=${budget.id})}" aria-pressed="true" role="button" class="btn btn-outline-primary btn-lg " style="width: 20%;">Scan Receipt</a>
+        </p>
     </div>
     <!--Disused-->
     <!--<div class="body">
         <label type="button"  aria-pressed="true" role="button"  class="btn btn-outline-primary btn-lg " style="width: 20%;"> Upload Receipt<input type="file" hidden></label>
     </div>-->
     <div class="body">
-        <a href="/manual-expense" aria-pressed="true" role="button" class="btn btn-outline-primary btn-lg " style="width: 20%;">Enter Manually</a>
+        <p th:each="budget : ${budgets}">
+            <a th:href="@{/manual-expense/{id}(id=${budget.id})}" aria-pressed="true" role="button" class="btn btn-outline-primary btn-lg " style="width: 20%;">Enter Manually</a>
+        </p>
     </div>
 </div>
 </body>
