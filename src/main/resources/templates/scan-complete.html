@@ -61,12 +61,16 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/home">Home</a>
         </li>
+        <p th:each="budget : ${budgets}" style="float: left;">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/budget-01">Budget View</a>
+          <a th:href="@{/budget/{id}(id=${budget.id})}" class="nav-link active" aria-current="page">Budget View</a>
         </li>
+        </p>
+        <p th:each="budget : ${budgets}">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/scan">New Expense</a>
+          <a th:href="@{/scan/{id}(id=${budget.id})}" class="nav-link active" aria-current="page">New Expense</a>
         </li>
+        </p>
       </ul>
     </div>
   </div>

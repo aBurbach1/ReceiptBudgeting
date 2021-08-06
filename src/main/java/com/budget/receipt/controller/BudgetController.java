@@ -41,24 +41,34 @@ public class BudgetController {
 //    @GetMapping(value="/new-expense")
 //    public String newExpense() { return "new-expense"; }
 
-    @GetMapping("/manual-expense")
-    public String manualExpense(Model model) {
+    @GetMapping("/manual-expense/{id}")
+    public String manualExpense(@PathVariable("id") long id,Model model) {
         model.addAttribute("expense", new Expense());
-        return "manual-expense";
+        Budget budget = budgetRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid Id:" + id));
+        model.addAttribute("budgets", budget);
+        return "redirect:/budget/{id}";
     }
 
-    @PostMapping("/manual-expense")
-    public String manualExpenseSumbit(@ModelAttribute Expense expense, Model model) {
+    @PostMapping("/manual-expense/{id}")
+    public String manualExpenseSumbit(@PathVariable("id") long id, @ModelAttribute Expense expense, Model model) {
+        Budget budget = budgetRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid Id:" + id));
+        model.addAttribute("budgets", budget);
         model.addAttribute("expense", expense);
         expenseRepository.save(expense);
-        return "redirect:/budget-01";
+        return "redirect:/budget/{id}";
     }
 
-    @GetMapping(value = "/scan")
-    public String scan() { return "scan";}
+    @GetMapping(value = "/scan/{id}")
+    public String scan(@PathVariable("id") long id, Model model) {
+        Budget budget = budgetRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid Id:" + id));
+        model.addAttribute("budgets", budget);
+        return "scan";
+    }
 
-    @GetMapping(value="/scan-complete")
-    public String scanComplete(Model model) {
+    @GetMapping(value="/scan-complete/{id}")
+    public String scanComplete(@PathVariable("id") long id, Model model) {
+        Budget budget = budgetRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid Id:" + id));
+        model.addAttribute("budgets", budget);
         Expense expense = ocrService.runOCR("src/main/resources/receipt-images/walmart-receipt.jpg");
         System.out.println("Expense id: " + expense.getId());
         System.out.println("Expense Category: " + expense.getCategory());
