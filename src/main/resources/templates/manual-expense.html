@@ -139,12 +139,16 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/home">Home</a>
                 </li>
+                <p th:each="budget : ${budgets}" style="float: left;">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/budget-01">Budget View</a>
+                    <a th:href="@{/budget/{id}(id=${budget.id})}" class="nav-link active" aria-current="page">Budget View</a>
                 </li>
+                </p>
+                <p th:each="budget : ${budgets}">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/scan">New Expense</a>
+                    <a th:href="@{/scan/{id}(id=${budget.id})}" class="nav-link active" aria-current="page">New Expense</a>
                 </li>
+                </p>
             </ul>
         </div>
     </div>
@@ -178,7 +182,9 @@
         </div>
         <div style="text-align: center; padding-top: 4%;">
             <button type="button submit" name = "submit" class="btn btn-outline-primary" style="margin-right: 5%; width: 20%">Submit</button>
-            <a href="/scan" aria-pressed="true" role="button" class="btn btn-outline-primary btn-lg " style="margin-left: 5%; width: 20%">Cancel</a>
+            <p th:each="budget : ${budgets}">
+                <a th:href="@{/scan/{id}(id=${budget.id})}" class="btn btn-outline-primary" style="margin-left: 5%; width: 20%">Cancel</a>
+            </p>
         </div>
     </form>
 </div>
