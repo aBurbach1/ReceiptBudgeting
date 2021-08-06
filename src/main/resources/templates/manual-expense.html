@@ -160,6 +160,7 @@
 
 
 <div id="manualExpenseInputs">
+    <div th:each="budget : ${budgets}">
     <form th:action="@{/manual-expense}" th:object="${Expense}" method="post">
         <div style="margin: 2%;">
             <h2 for="country">Category</h2>
@@ -181,12 +182,15 @@
             </div>
         </div>
         <div style="text-align: center; padding-top: 4%;">
-            <button type="button submit" name = "submit" class="btn btn-outline-primary" style="margin-right: 5%; width: 20%">Submit</button>
+<!--            <button type="button submit" name = "submit" class="btn btn-outline-primary" style="margin-right: 5%; width: 20%">Submit</button>-->
             <p th:each="budget : ${budgets}">
+                <input type="hidden" name="id" th:value="${budget.id}"/>
+                <button type="button submit" name = "submit" class="btn btn-outline-primary" style="margin-right: 5%; width: 20%">Submit</button>
                 <a th:href="@{/scan/{id}(id=${budget.id})}" class="btn btn-outline-primary" style="margin-left: 5%; width: 20%">Cancel</a>
             </p>
         </div>
     </form>
+    </div>
 </div>
 </body>
 </html>

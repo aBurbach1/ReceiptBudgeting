@@ -44,4 +44,14 @@ public class ExpenseService {
         }
         return total;
     }
+
+//    public String[] getAllCategories(String budgetName, List<Expense> allExpenses) {
+//        String[] allCategories = new String[50];
+//        for(Expense e : allExpenses) {
+//            if(e.getBudgetName().equals(budgetName)) {
+//                allCategories
+//            }
+//        }
+//
+//    }
 }
