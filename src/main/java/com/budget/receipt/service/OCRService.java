@@ -23,24 +23,43 @@ public class OCRService {
         categoryToRetailerMap.put("Utilities", new String[]{"OPPD", "MUD"});
     }
 
-    public Expense runOCR(String filePath) {
+    /**
+     * runs OCR on the image at the specified file path
+     * @param filePath,
+     * @param budgetName
+     * @return Expense obejct with values from receipt scan
+     */
+    public Expense runOCR(String filePath, String budgetName) {
         String textFromImage = extractTextFromImage(filePath);
 //        System.out.println(textFromImage);
-        Expense expense = parseExpense(textFromImage);
+        Expense expense = parseExpense(textFromImage, budgetName);
         System.out.println("Expense Cost: "  + expense.getCost());
         System.out.println("Expense Category: " + expense.getCategory());
         return expense;
     }
 
-    private Expense parseExpense(String txt) {
+    /**
+     * takes extracted text from receipt image and calls helper methods
+     * on it to set Expense fields
+     * @param txt
+     * @param budgetName
+     * @return Expense
+     */
+    private Expense parseExpense(String txt, String budgetName) {
         Expense expense = new Expense();
-        String splicedTxt[] = txt.split(" ");
         expense.setCategory(getCategoryFromReceipt(txt));
         expense.setCost(getCostFromReceipt(txt));
         expense.setBudgetName("August 2021 Budget");
         return expense;
     }
 
+    /**
+     * uses regex to try to find any of the recognized retailers
+     * in the receipt text, then uses the hashmap to assign a
+     * category based on the found retailer
+     * @param txt
+     * @return category
+     */
     private String getCategoryFromReceipt(String txt) {
         String category = "";
         for(Map.Entry<String, String[]> e: this.categoryToRetailerMap.entrySet()) {
@@ -57,6 +76,12 @@ public class OCRService {
         return category;
     }
 
+    /**
+     * uses regex to find total in the receipt text,
+     * then extracts the amount next to it
+     * @param txt
+     * @return amount
+     */
     private BigDecimal getCostFromReceipt(String txt) {
         String amountValue = "0";
         Pattern p = Pattern.compile("(Total|total|TOTAL)\\s*(\\w+)");
@@ -68,13 +93,11 @@ public class OCRService {
         return amount;
     }
 
-    private boolean contains(String[] arr, String retailer) {
-        for (String x : arr) {
-            if(x.equals(retailer)) return true;
-        }
-        return false;
-    }
-
+    /**
+     * uses tessaract to extract text from image
+     * @param filePath
+     * @return text from image
+     */
     private String extractTextFromImage(String filePath) {
         File image = new File(filePath);
         Tesseract tesseract = new Tesseract();

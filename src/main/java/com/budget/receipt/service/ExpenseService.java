@@ -11,19 +11,11 @@ import java.util.List;
 
 @Repository
 public class ExpenseService {
-//    private ExpenseRepository expenseRepository;
-
-//    public List<Expense> getAll() {
-//        return expenseRepository.findAll();
-//    }
-//    public Expense getById(long id) {
-//        return expenseRepository.getById(id);
-//    }
-
     /**
-     *
-     * @param budgetName
-     * @return total of expense costs in the
+     * iterates through list of expenses. For each expense, adds the associated
+     * cost if it belongs to the specified budget
+     * @param budgetName, allExpenses
+     * @return total of expense costs in the budget
      */
     public int totalExpensesByBudget(String budgetName, List<Expense> allExpenses) {
         int total = 0;
@@ -35,6 +27,14 @@ public class ExpenseService {
         return total;
     }
 
+    /**
+    * iterates through list of expenses. For each expense, adds the associated
+     * cost if it belongs to the specified budget
+     * @param budget
+     * @param category
+     * @param allExpenses
+     * @return total of all expenses belonging to specified budget and category
+     */
     public int totalExpensesByBudgetAndCategory(String budget, String category, List<Expense> allExpenses) {
         int total = 0;
         for(Expense e : allExpenses) {
@@ -44,26 +44,4 @@ public class ExpenseService {
         }
         return total;
     }
-
-//    public List<Expense> findByBudget(String budget){
-//        List<Expense> allExpenses = this.getAll();
-//        List<Expense> selectedExpenses = new ArrayList<Expense>();
-//        for (Expense e: allExpenses) {
-//            if(e.getBudgetName().equals(budget)) {
-//                selectedExpenses.add(e);
-//            }
-//        }
-//        return selectedExpenses;
-//    }
-
-//    public List<Expense> getByBudgetAndCategory(String budget, String category) {
-//        List<Expense> allExpenses = this.getAll();
-//        List<Expense> selectedExpenses = new ArrayList<Expense>();
-//        for (Expense e: allExpenses) {
-//            if(e.getBudgetName().equals(budget) && e.getCategory().equals(category)) {
-//                selectedExpenses.add(e);
-//            }
-//        }
-//        return selectedExpenses;
-//    }
 }

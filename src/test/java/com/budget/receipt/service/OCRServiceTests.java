@@ -27,15 +27,15 @@ public class OCRServiceTests {
     @InjectMocks
     OCRService ocrService = new OCRService();
 
-    @Test
-    void OCRServiceTests()
-    {
-        String filePath = "src/main/resources/receipt-images/testImg.jpeg";
-
-        Expense a = ocrService.runOCR(filePath);
-
-        assertNotNull(a);
-
-        //TODO: REQUEST ASSISTANCE
-    }
+//    @Test
+//    void OCRServiceTests()
+//    {
+//        String filePath = "src/main/resources/receipt-images/testImg.jpeg";
+//
+////        Expense a = ocrService.runOCR(filePath);
+//
+//        assertNotNull(a);
+//
+//        //TODO: REQUEST ASSISTANCE
+//    }
 }
