@@ -35,6 +35,7 @@ public class BudgetController {
     public String budgetDisplay(@PathVariable("id") long id, Model model) {
         Budget budget = budgetRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid Id:" + id));
         model.addAttribute("budgets", budget);
+        System.out.println(expenseService.totalExpensesByBudget(budget.getName(), expenseRepository.findAll()));
         return "budget-01";
     }
 
