@@ -35,28 +35,42 @@ public class BudgetController {
     public String budgetDisplay(@PathVariable("id") long id, Model model) {
         Budget budget = budgetRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid Id:" + id));
         model.addAttribute("budgets", budget);
-        System.out.println(expenseService.totalExpensesByBudget(budget.getName(), expenseRepository.findAll()));
+//        model.addAttribute("expenses", );
+        model.addAttribute("totalExpenses", expenseService.totalExpensesByBudget(budget.getName(), expenseRepository.findAll()));
         return "budget-01";
     }
 
 //    @GetMapping(value="/new-expense")
 //    public String newExpense() { return "new-expense"; }
 
-    @GetMapping("/manual-expense")
-    public String manualExpense(Model model) {
+
+    @GetMapping("/manual-expense/{id}")
+    public String manualExpense(@PathVariable("id") long id,Model model) {
         model.addAttribute("expense", new Expense());
+        Budget budget = budgetRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid Id:" + id));
+        model.addAttribute("budgets", budget);
+        System.out.println("OPE");
         return "manual-expense";
     }
 
     @PostMapping("/manual-expense")
-    public String manualExpenseSumbit(@ModelAttribute Expense expense, Model model) {
+    public String manualExpenseSumbit(@RequestParam("id") Long id, @ModelAttribute Expense expense, Model model) {
+        Budget budget = budgetRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid Id:" + id));
+        model.addAttribute("budgets", budget);
+        expense.setBudgetName(budget.getName());
         model.addAttribute("expense", expense);
         expenseRepository.save(expense);
-        return "redirect:/budget-01";
+        System.out.println("MADE IT TO SUBMIT");
+        System.out.println("budget" + budget);
+        return "redirect:/home";
     }
 
-    @GetMapping(value = "/scan")
-    public String scan() { return "scan";}
+    @GetMapping(value = "/scan/{id}")
+    public String scan(@PathVariable("id") long id, Model model) {
+        Budget budget = budgetRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid Id:" + id));
+        model.addAttribute("budgets", budget);
+        return "scan";
+    }
 
     @GetMapping(value="/scan-complete/{id}")
     public String scanComplete(@PathVariable("id") long id, Model model) {
