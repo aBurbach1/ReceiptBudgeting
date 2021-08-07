@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
+import java.math.RoundingMode;
+import java.util.*;
 
 @Repository
 public class ExpenseService {
@@ -28,30 +28,54 @@ public class ExpenseService {
     }
 
     /**
-    * iterates through list of expenses. For each expense, adds the associated
-     * cost if it belongs to the specified budget
-     * @param budget
-     * @param category
+     * iterates through list of expenses. For each expense, creates a key value map
+     * of the cost and percentage
+     * @param budgetName
+     * @param income
      * @param allExpenses
-     * @return total of all expenses belonging to specified budget and category
+     * @return total of all expenses and percentages belonging to specified budget and category
      */
-    public int totalExpensesByBudgetAndCategory(String budget, String category, List<Expense> allExpenses) {
-        int total = 0;
+    public  Map<BigDecimal, BigDecimal> totalExpenseAndPercent(String budgetName, BigDecimal income, List<Expense> allExpenses) {
+
+        Map<BigDecimal, BigDecimal> totalExpenseAndPercent = new HashMap<>();
+        BigDecimal percent = new BigDecimal(100);
+
+        BigDecimal total = new BigDecimal(0);
         for(Expense e : allExpenses) {
-            if(e.getBudgetName().equals(budget) && e.getCategory().equals(category)) {
-                total += e.getCost().intValue();
+            if(e.getBudgetName().equals(budgetName)) {
+                total = total.add(e.getCost());
             }
         }
-        return total;
+        for(int i = 0; i < allExpenses.size(); i++) {
+            if(allExpenses.get(i).getBudgetName().equals(budgetName)) {
+                BigDecimal x = (total.divide(income, RoundingMode.FLOOR).multiply(percent));
+                totalExpenseAndPercent.put(total, x);
+            }
+        }
+
+        return totalExpenseAndPercent;
     }
 
-//    public String[] getAllCategories(String budgetName, List<Expense> allExpenses) {
-//        String[] allCategories = new String[50];
-//        for(Expense e : allExpenses) {
-//            if(e.getBudgetName().equals(budgetName)) {
-//                allCategories
-//            }
-//        }
-//
-//    }
+
+    /**
+     * iterates through list of expenses. For each expense, creates a key value map
+     * of the category and percentage
+     * @param budgetName
+     * @param income
+     * @param allExpenses
+     * @return the category and percentage belonging to specified budget and category
+     */
+    public  Map<String, BigDecimal> getAllCategories(String budgetName, BigDecimal income, List<Expense> allExpenses) {
+
+        Map<String, BigDecimal> allCategories = new HashMap<>();
+        BigDecimal percent = new BigDecimal(100);
+
+        for(int i = 0; i < allExpenses.size(); i++) {
+            if(allExpenses.get(i).getBudgetName().equals(budgetName)) {
+                BigDecimal x = (allExpenses.get(i).getCost()).divide(income, RoundingMode.FLOOR).multiply(percent);
+                allCategories.put(allExpenses.get(i).getCategory(), x);
+            }
+        }
+        return allCategories;
+    }
 }
