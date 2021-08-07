@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
+
 @Controller
 public class BudgetController {
     private final ExpenseRepository expenseRepository;
@@ -35,8 +37,9 @@ public class BudgetController {
     public String budgetDisplay(@PathVariable("id") long id, Model model) {
         Budget budget = budgetRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid Id:" + id));
         model.addAttribute("budgets", budget);
-//        model.addAttribute("expenses", );
         model.addAttribute("totalExpenses", expenseService.totalExpensesByBudget(budget.getName(), expenseRepository.findAll()));
+        model.addAttribute("categories", expenseService.getAllCategories(budget.getName(), budget.getIncome(), expenseRepository.findAll()));
+        model.addAttribute("expensePercents", expenseService.totalExpenseAndPercent(budget.getName(), budget.getIncome(), expenseRepository.findAll()));
         return "budget-01";
     }
 
@@ -49,7 +52,6 @@ public class BudgetController {
         model.addAttribute("expense", new Expense());
         Budget budget = budgetRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid Id:" + id));
         model.addAttribute("budgets", budget);
-        System.out.println("OPE");
         return "manual-expense";
     }
 
@@ -60,8 +62,6 @@ public class BudgetController {
         expense.setBudgetName(budget.getName());
         model.addAttribute("expense", expense);
         expenseRepository.save(expense);
-        System.out.println("MADE IT TO SUBMIT");
-        System.out.println("budget" + budget);
         return "redirect:/home";
     }
 
@@ -77,9 +77,6 @@ public class BudgetController {
         Budget budget = budgetRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid Id:" + id));
         model.addAttribute("budgets", budget);
         Expense expense = ocrService.runOCR("src/main/resources/receipt-images/walmart-receipt.jpg", budget.getName());
-        System.out.println("Expense id: " + expense.getId());
-        System.out.println("Expense Category: " + expense.getCategory());
-        System.out.println("Expense cost: " + expense.getCost());
         model.addAttribute("expense", expense);
 //        expenseRepository.save(expense);
 //        List<Expense> expenseList = expenseService.findByBudget("August 2021 Budget");
@@ -92,7 +89,6 @@ public class BudgetController {
     @PostMapping(value="/scan-complete")
     public String submitExpense(@ModelAttribute Expense expense, Model model) {
         model.addAttribute("expense", expense);
-        System.out.println("post mapping");
         expenseRepository.save(expense);
         return "redirect:/home";
     }
