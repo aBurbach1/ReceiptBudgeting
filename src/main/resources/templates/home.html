@@ -95,10 +95,9 @@
   </div>
   <div style="margin: 1.5%;">
     <p th:each="budget : ${budgets}">
-      <a th:href="@{/budget/{id}(id=${budget.id})}" th:text="${budget.name}" class="btn btn-primary"></a>
+      <a th:href="@{/budget/{id}(id=${budget.id})}" th:text="${budget.name}" class="btn btn-primary btn-lg" style="width: 30%"></a>
     </p>
   </div>
 </div>
 </body>
 </html>
-

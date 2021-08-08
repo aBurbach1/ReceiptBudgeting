@@ -12,7 +12,6 @@
     <style>
         body {
             font-family: Arial,serif;
-            text-align: center;
         }
 
         h4 {
@@ -104,6 +103,7 @@
 
         .flex-container .leftCategory-div{
             width: 10%;
+            align-items: center;
         }
 
         .flex-container .centerCategory-div{
@@ -115,7 +115,6 @@
                 width: 75%;
                 border: 2px solid #9BC2E5;
                 background-color: #cfdae4;
-                height: 2em;
         }
 
         .flex-container {
@@ -159,13 +158,11 @@
         <div class="flex-row">
             <div class="flex-container" style="margin-bottom:2%;">
                 <div class="left-div">
-                    <h4 th:each="totalExpense : ${totalExpenses}">Expenses: $
-                      <h4 th:text="${totalExpense}"></h4>
-                    </h4>
-                </div>
-                <div class="centerCategory-div">
                     <h4 th:each="budget : ${budgets}">Income: $
-                       <h4 th:text="${budget.income}">$</h4>
+                        <h4 th:text="${budget.income}">$</h4>
+                    </h4>
+                    <h4 th:each="totalExpense : ${totalExpenses}" style="margin-left: 8%;">Expenses: $
+                        <h4 th:text="${totalExpense}">$</h4>
                     </h4>
                 </div>
                 <div class="right-div">
@@ -188,6 +185,29 @@
         <div id="expenses">
             <div class="flex-row" th:each="category : ${categories}">
                 <div class="flex-container" style="margin-bottom:2%;">
+                    <div class="leftCategory-div">
+                        <div th:if="${category.key} == 'Rent'">
+                            <i class="fas fa-building" style="font-size: 5em; color: blue; margin-right: 6%;"></i>
+                        </div>
+                        <div th:if="${category.key} == 'Entertainment'">
+                            <i class="fas fa-gamepad" style="font-size: 5em; color: blue; margin-right: 6%"></i>
+                        </div>
+                        <div th:if="${category.key} == 'Mortgage'">
+                            <i class="fas fa-home" style="font-size: 5em; color: blue; margin-right: 6%"></i>
+                        </div>
+                        <div th:if="${category.key} == 'Transportation'">
+                            <i class="fas fa-car" style="font-size: 5em; color: blue; margin-right: 6%"></i>
+                        </div>
+                        <div th:if="${category.key} == 'Utilities'">
+                            <i class="fas fa-phone-alt" style="font-size: 5em; color: blue; margin-right: 6%"></i>
+                        </div>
+                        <div th:if="${category.key} == 'Grocery'">
+                            <i class="fas fa-utensils" style="font-size: 5em; color: blue; margin-right: 6%"></i>
+                        </div>
+                        <div th:if="${category.key} == 'Laundry'">
+                            <i class="fas fa-tshirt" style="font-size: 5em; color: blue; margin-right: 6%"></i>
+                        </div>
+                    </div>
                     <div class="centerCategory-div">
                         <h4 th:text="${category.key}"></h4>
                     </div>
