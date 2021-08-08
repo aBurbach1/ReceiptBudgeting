@@ -70,12 +70,39 @@ public class ExpenseService {
         Map<String, BigDecimal> allCategories = new HashMap<>();
         BigDecimal percent = new BigDecimal(100);
 
-        for(int i = 0; i < allExpenses.size(); i++) {
-            if(allExpenses.get(i).getBudgetName().equals(budgetName)) {
-                BigDecimal x = (allExpenses.get(i).getCost()).divide(income, RoundingMode.FLOOR).multiply(percent);
-                allCategories.put(allExpenses.get(i).getCategory(), x);
+        List<BigDecimal> subTotals = new ArrayList<>();
+        List<String> catNames = new ArrayList<>();
+
+        for (Expense e: allExpenses)
+        {
+            if(e.getBudgetName().equals(budgetName)) {
+                if (catNames.contains(e.getCategory())){
+                    BigDecimal x = subTotals.get(catNames.indexOf(e.getCategory()));
+                    BigDecimal y = x.add(e.getCost());
+                    subTotals.set(catNames.indexOf(e.getCategory()), y);
+                }
+                else{
+                    catNames.add(e.getCategory());
+                    subTotals.add(e.getCost());
+                }
             }
         }
+        if (subTotals.size() != catNames.size()) return null;
+        for (int i = 0; i < subTotals.size(); i++){
+            BigDecimal x = subTotals.get(i).divide(income, RoundingMode.FLOOR).multiply(percent);
+            allCategories.put(catNames.get(i), x);
+        }
+        /**for(int i = 0; i < allExpenses.size(); i++) {
+            if(allExpenses.get(i).getBudgetName().equals(budgetName)) {
+                BigDecimal x = (allExpenses.get(i).getCost()).divide(income, RoundingMode.UNNECESSARY).multiply(percent);
+                //allCategories.put(allExpenses.get(i).getCategory(), x);
+                BigDecimal a = allCategories.putIfAbsent(allExpenses.get(i).getCategory(), x);
+                if (a != null){
+                    x.add(a);
+                    allCategories.put(allExpenses.get(i).getCategory(), x);
+                }
+            }
+        }*/
         return allCategories;
     }
 }
