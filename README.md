@@ -18,4 +18,7 @@ There are screens for each core functionality with navigation between them where
 All of our classes are in place to handle the front end functionality. We have also updated the front-end CSS. 
 
 (7/29 - Milestone 3)
-We have implemented ORC, the technology that we will use to scan receipts into our application for use in budgets. Our database is hooked up and can add tables to the schema. The tables will hold the information for the budgets and their expenses.   
+We have implemented OCR, the technology that we will use to scan receipts into our application for use in budgets. Our database is hooked up and can add tables to the schema. The tables will hold the information for the budgets and their expenses.   
+
+(8/12 - Milestone 4) 
+The project is completed, with automatic test cases for most classes (BudgetController and OCRService have been tested manually due to the unreasonable nature of automating tests for them). Expenses can be scanned and uploaded, then added via the web application.
