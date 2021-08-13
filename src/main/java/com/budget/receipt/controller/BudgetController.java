@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.Arrays;
 
 @Controller
@@ -72,23 +74,39 @@ public class BudgetController {
         return "scan";
     }
 
-    @GetMapping(value="/scan-complete/{id}")
-    public String scanComplete(@PathVariable("id") long id, Model model) {
+    @GetMapping(value="/file-upload/{id}")
+    public String fileUpload(@PathVariable("id") long id, Model model) {
+        model.addAttribute("budget", id);
+//        Budget budget = budgetRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid Id:" + id));
+//        model.addAttribute("budgets", budget);
+        return "file-upload";
+    }
+
+    @PostMapping(value="/file-upload")
+    public String fileUploaded(@RequestParam("file") MultipartFile file, @RequestParam("id") long id, Model model) throws IOException {
         Budget budget = budgetRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid Id:" + id));
         model.addAttribute("budgets", budget);
-        Expense expense = ocrService.runOCR("src/main/resources/receipt-images/walmart-receipt.jpg", budget.getName());
+        Expense expense = ocrService.runOCR(file, budget.getName());
+        expense.setBudgetName(budget.getName());
         model.addAttribute("expense", expense);
-//        expenseRepository.save(expense);
-//        List<Expense> expenseList = expenseService.findByBudget("August 2021 Budget");
-//        for(Expense e : expenseList) {
-//            System.out.println(e.getBudgetName());
-//            System.out.println(e.getCost());
-//        }
-        return "scan-complete/{id}"; }
+        expenseRepository.save(expense);
+        return "redirect:/home";
+    }
 
-    @PostMapping(value="/scan-complete/{id}")
-    public String submitExpense(@ModelAttribute Expense expense, Model model) {
+    @GetMapping(value="/scan-complete/{id}")
+    public String scanComplete(@PathVariable("id") long id, Model model) {
+//        Budget budget = budgetRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid Id:" + id));
+//        model.addAttribute("budgets", budget);
+//        Expense expense = ocrService.runOCR("src/main/resources/receipt-images/walmart-receipt.jpg", budget.getName());
+//        expense.setBudgetName(budget.getName());
+//        model.addAttribute("expense", expense);
+        return "scan-complete"; }
+
+    @PostMapping(value="/scan-complete")
+    public String submitExpense(@RequestParam("id") long id, @ModelAttribute Expense expense, Model model) {
         model.addAttribute("expense", expense);
+        Budget budget = budgetRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid Id:" + id));
+        expense.setBudgetName(budget.getName());
         expenseRepository.save(expense);
         return "redirect:/home";
     }
