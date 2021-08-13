@@ -138,7 +138,14 @@
             <option value="Utilities">Utilities</option>
   </select>
   <p>Amount: </p><input type="number" th:field="*{cost}">
-    <input type="submit" value="Submit" />
+  <div style="text-align: center; padding-top: 4%;">
+    <!--            <button type="button submit" name = "submit" class="btn btn-outline-primary" style="margin-right: 5%; width: 20%">Submit</button>-->
+    <p th:each="budget : ${budgets}">
+      <input type="hidden" name="id" th:value="${budget.id}"/>
+      <button type="button submit" name = "submit" class="btn btn-outline-primary" style="margin-right: 5%; width: 20%">Submit</button>
+      <a th:href="@{/scan/{id}(id=${budget.id})}" class="btn btn-outline-primary" style="margin-left: 5%; width: 20%">Cancel</a>
+    </p>
+  </div>
 </form>
   <div style="text-align: center; padding-top: 4%;">
 <!--    <a href="/validate-expense" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" style="margin-right: 5%; width: 20%">Submit</a>-->

@@ -2,8 +2,11 @@ package com.budget.receipt.service;
 
 import com.budget.receipt.model.expense.Expense;
 import net.sourceforge.tess4j.Tesseract;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashMap;
@@ -25,12 +28,12 @@ public class OCRService {
 
     /**
      * runs OCR on the image at the specified file path
-     * @param filePath,
+     * @param file,
      * @param budgetName
      * @return Expense obejct with values from receipt scan
      */
-    public Expense runOCR(String filePath, String budgetName) {
-        String textFromImage = extractTextFromImage(filePath);
+    public Expense runOCR(MultipartFile file, String budgetName) throws IOException {
+        String textFromImage = extractTextFromImage(file);
 //        System.out.println(textFromImage);
         Expense expense = parseExpense(textFromImage, budgetName);
         System.out.println("Expense Cost: "  + expense.getCost());
@@ -49,7 +52,7 @@ public class OCRService {
         Expense expense = new Expense();
         expense.setCategory(getCategoryFromReceipt(txt));
         expense.setCost(getCostFromReceipt(txt));
-        expense.setBudgetName("August 2021 Budget");
+        expense.setBudgetName(budgetName);
         return expense;
     }
 
@@ -95,11 +98,11 @@ public class OCRService {
 
     /**
      * uses tessaract to extract text from image
-     * @param filePath
+     * @param file
      * @return text from image
      */
-    private String extractTextFromImage(String filePath) {
-        File image = new File(filePath);
+    private String extractTextFromImage(MultipartFile file) throws IOException {
+        File image = convert(file);
         Tesseract tesseract = new Tesseract();
         tesseract.setDatapath("src/main/resources/tessdata");
         tesseract.setLanguage("eng");
@@ -112,5 +115,14 @@ public class OCRService {
             System.out.println("Error with OCR" + e);
         }
         return result;
+    }
+
+    private File convert(MultipartFile file) throws IOException {
+        File convertedFile = new File(file.getOriginalFilename());
+        convertedFile.createNewFile();
+        FileOutputStream fos = new FileOutputStream(convertedFile);
+        fos.write(file.getBytes());
+        fos.close();
+        return convertedFile;
     }
 }
